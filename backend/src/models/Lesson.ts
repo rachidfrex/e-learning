@@ -46,8 +46,8 @@ export const LessonModel = {
   },
 
   async update(id: number, lesson: Partial<Lesson>): Promise<Lesson | null> {
-    const fields = [];
-    const values = [];
+    const fields: string[] = [];
+    const values: any[] = [];
     let paramCount = 1;
 
     Object.entries(lesson).forEach(([key, value]) => {

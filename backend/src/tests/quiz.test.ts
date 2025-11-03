@@ -200,7 +200,7 @@ describe('Quiz Logic Tests', () => {
     it('should correctly identify matching answers', () => {
       const correctAnswer = 'Paris';
       const userAnswer1 = 'Paris';
-      const userAnswer2 = 'paris'; // Case sensitive
+      const userAnswer2: string = 'paris'; // Case sensitive
 
       expect(userAnswer1 === correctAnswer).toBe(true);
       expect(userAnswer2 === correctAnswer).toBe(false);

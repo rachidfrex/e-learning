@@ -14,6 +14,7 @@ interface Quiz {
   title: string;
   description: string;
   passing_score: number;
+  course_id?: number;
 }
 
 const Quiz = () => {

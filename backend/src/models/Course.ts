@@ -52,8 +52,8 @@ export const CourseModel = {
   },
 
   async update(id: number, course: Partial<Course>): Promise<Course | null> {
-    const fields = [];
-    const values = [];
+    const fields: string[] = [];
+    const values: any[] = [];
     let paramCount = 1;
 
     Object.entries(course).forEach(([key, value]) => {
