@@ -1,0 +1,77 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: elearning_postgres
+    environment:
+      POSTGRES_DB: elearning
+      POSTGRES_USER: elearning_user
+      POSTGRES_PASSWORD: elearning_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U elearning_user -d elearning"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: elearning_redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: elearning_backend
+    ports:
+      - "3001:3001"
+    environment:
+      PORT: 3001
+      NODE_ENV: development
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: elearning
+      DB_USER: elearning_user
+      DB_PASSWORD: elearning_pass
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      JWT_SECRET: your-secret-key-change-this-in-production
+      JWT_EXPIRES_IN: 7d
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    command: npm run dev
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: elearning_frontend
+    ports:
+      - "3000:3000"
+    environment:
+      VITE_API_URL: http://localhost:3001
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+volumes:
+  postgres_data:
