@@ -8,6 +8,7 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "migrate": "node dist/migrations/run.js",
+    "seed": "ts-node src/migrations/seed-run.ts",
     "test": "jest --coverage"
   },
   "keywords": [

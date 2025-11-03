@@ -73,6 +73,37 @@ e-learning/
 
 ## 🚀 Quick Start with Docker
 
+### Automated Setup (Recommended)
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd e-learning
+   ```
+
+2. **Run the setup script**
+   ```bash
+   ./setup.sh
+   ```
+   
+   This script will:
+   - Check Docker and Docker Compose installation
+   - Create environment files from examples
+   - Start all services
+   - Run database migrations
+   - Seed the database with sample data
+
+3. **Access the application**
+   - Frontend: http://localhost:3000
+   - Backend API: http://localhost:3001
+   - API Health: http://localhost:3001/health
+
+4. **Login with sample credentials**
+   - Instructor: `teacher@example.com` / `password123`
+   - Student: `student@example.com` / `password123`
+
+### Manual Setup
+
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
@@ -116,7 +147,12 @@ e-learning/
    docker-compose exec backend npm run migrate
    ```
 
-5. **Access the application**
+5. **Seed database with sample data (optional)**
+   ```bash
+   docker-compose exec backend npm run seed
+   ```
+
+6. **Access the application**
    - Frontend: http://localhost:3000
    - Backend API: http://localhost:3001
    - API Health: http://localhost:3001/health
@@ -306,19 +342,40 @@ docker-compose -f docker-compose.prod.yml up -d
 
 ## 📝 Sample Data
 
-To add sample courses and lessons, you can use the API or create a seed script:
+The project includes a seed script that populates the database with sample data:
+
+```bash
+# Using Docker
+docker-compose exec backend npm run seed
+
+# Local development
+cd backend
+npm run seed
+```
+
+This creates:
+- 2 sample users (instructor and student)
+- 3 sample courses (JavaScript, React, Node.js)
+- Multiple lessons for each course
+- A sample quiz with questions
+
+### Sample Credentials
+- **Instructor**: `teacher@example.com` / `password123`
+- **Student**: `student@example.com` / `password123`
+
+You can also use the API to create your own data:
 
 ```bash
 # Register a user
 curl -X POST http://localhost:3001/api/auth/register \
   -H "Content-Type: application/json" \
-  -d '{"email":"teacher@example.com","password":"password123","name":"John Doe"}'
+  -d '{"email":"newuser@example.com","password":"password123","name":"John Doe"}'
 
 # Create a course (use token from registration)
 curl -X POST http://localhost:3001/api/courses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_TOKEN" \
-  -d '{"title":"Introduction to JavaScript","description":"Learn JavaScript from scratch","level":"Beginner","duration_minutes":120}'
+  -d '{"title":"Introduction to Python","description":"Learn Python from scratch","level":"Beginner","duration_minutes":180}'
 ```
 
 ## 🤝 Contributing
