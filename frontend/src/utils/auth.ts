@@ -1,3 +1,10 @@
+export interface User {
+  id: number;
+  email: string;
+  name: string;
+  role: string;
+}
+
 export const setToken = (token: string) => {
   localStorage.setItem('token', token);
 };
@@ -10,11 +17,11 @@ export const removeToken = () => {
   localStorage.removeItem('token');
 };
 
-export const setUser = (user: any) => {
+export const setUser = (user: User) => {
   localStorage.setItem('user', JSON.stringify(user));
 };
 
-export const getUser = () => {
+export const getUser = (): User | null => {
   const user = localStorage.getItem('user');
   return user ? JSON.parse(user) : null;
 };

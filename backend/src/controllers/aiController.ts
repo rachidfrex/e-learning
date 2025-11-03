@@ -26,8 +26,7 @@ export const askAITeacher = async (req: AuthRequest, res: Response) => {
       return res.status(400).json({ error: 'Question is required' });
     }
 
-    // Simulate AI processing delay
-    await new Promise(resolve => setTimeout(resolve, 500));
+    // Note: Remove artificial delay in production
 
     // Generate mock response based on keywords
     let response = mockAIResponses[Math.floor(Math.random() * mockAIResponses.length)];

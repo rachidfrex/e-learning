@@ -21,55 +21,55 @@ api.interceptors.request.use((config) => {
 // Auth API
 export const authAPI = {
   register: (data: { email: string; password: string; name: string }) =>
-    api.post('/api/auth/register', data),
+    api.post('/auth/register', data),
   login: (data: { email: string; password: string }) =>
-    api.post('/api/auth/login', data),
-  getProfile: () => api.get('/api/auth/profile'),
+    api.post('/auth/login', data),
+  getProfile: () => api.get('/auth/profile'),
 };
 
 // Course API
 export const courseAPI = {
-  getAll: () => api.get('/api/courses'),
-  getById: (id: number) => api.get(`/api/courses/${id}`),
-  getEnrolled: () => api.get('/api/courses/enrolled'),
-  enroll: (id: number) => api.post(`/api/courses/${id}/enroll`),
-  create: (data: any) => api.post('/api/courses', data),
-  update: (id: number, data: any) => api.put(`/api/courses/${id}`, data),
-  delete: (id: number) => api.delete(`/api/courses/${id}`),
+  getAll: () => api.get('/courses'),
+  getById: (id: number) => api.get(`/courses/${id}`),
+  getEnrolled: () => api.get('/courses/enrolled'),
+  enroll: (id: number) => api.post(`/courses/${id}/enroll`),
+  create: (data: any) => api.post('/courses', data),
+  update: (id: number, data: any) => api.put(`/courses/${id}`, data),
+  delete: (id: number) => api.delete(`/courses/${id}`),
 };
 
 // Lesson API
 export const lessonAPI = {
-  getByCourseId: (courseId: number) => api.get(`/api/lessons/course/${courseId}`),
-  getById: (id: number) => api.get(`/api/lessons/${id}`),
-  markComplete: (id: number) => api.post(`/api/lessons/${id}/complete`),
-  create: (data: any) => api.post('/api/lessons', data),
-  update: (id: number, data: any) => api.put(`/api/lessons/${id}`, data),
-  delete: (id: number) => api.delete(`/api/lessons/${id}`),
+  getByCourseId: (courseId: number) => api.get(`/lessons/course/${courseId}`),
+  getById: (id: number) => api.get(`/lessons/${id}`),
+  markComplete: (id: number) => api.post(`/lessons/${id}/complete`),
+  create: (data: any) => api.post('/lessons', data),
+  update: (id: number, data: any) => api.put(`/lessons/${id}`, data),
+  delete: (id: number) => api.delete(`/lessons/${id}`),
 };
 
 // Quiz API
 export const quizAPI = {
-  getByCourseId: (courseId: number) => api.get(`/api/quizzes/course/${courseId}`),
-  getById: (id: number) => api.get(`/api/quizzes/${id}`),
+  getByCourseId: (courseId: number) => api.get(`/quizzes/course/${courseId}`),
+  getById: (id: number) => api.get(`/quizzes/${id}`),
   submitAttempt: (id: number, answers: any) =>
-    api.post(`/api/quizzes/${id}/attempt`, { answers }),
-  getAttempts: (id: number) => api.get(`/api/quizzes/${id}/attempts`),
-  create: (data: any) => api.post('/api/quizzes', data),
+    api.post(`/quizzes/${id}/attempt`, { answers }),
+  getAttempts: (id: number) => api.get(`/quizzes/${id}/attempts`),
+  create: (data: any) => api.post('/quizzes', data),
 };
 
 // Progress API
 export const progressAPI = {
-  getDashboard: () => api.get('/api/progress/dashboard'),
+  getDashboard: () => api.get('/progress/dashboard'),
   getCourseProgress: (courseId: number) =>
-    api.get(`/api/progress/course/${courseId}`),
+    api.get(`/progress/course/${courseId}`),
 };
 
 // AI API
 export const aiAPI = {
   ask: (question: string, courseContext?: string) =>
-    api.post('/api/ai/ask', { question, courseContext }),
-  getHistory: () => api.get('/api/ai/history'),
+    api.post('/ai/ask', { question, courseContext }),
+  getHistory: () => api.get('/ai/history'),
 };
 
 export default api;

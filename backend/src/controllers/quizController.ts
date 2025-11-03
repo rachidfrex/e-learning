@@ -73,6 +73,11 @@ export const submitQuizAttempt = async (req: AuthRequest, res: Response) => {
 
     const questions = await QuizModel.findQuestionsByQuizId(parseInt(id));
     
+    // Validate quiz has questions with points
+    if (questions.length === 0) {
+      return res.status(400).json({ error: 'Quiz has no questions' });
+    }
+
     // Calculate score
     let score = 0;
     let totalPoints = 0;

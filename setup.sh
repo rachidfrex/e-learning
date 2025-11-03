@@ -42,7 +42,19 @@ docker-compose up -d
 
 echo ""
 echo "⏳ Waiting for database to be ready..."
-sleep 10
+# Wait for database with health checks
+for i in {1..30}; do
+    if docker-compose exec -T postgres pg_isready -U elearning_user -d elearning > /dev/null 2>&1; then
+        echo "✅ Database is ready!"
+        break
+    fi
+    if [ $i -eq 30 ]; then
+        echo "❌ Database failed to start within 30 seconds"
+        exit 1
+    fi
+    echo "Waiting... ($i/30)"
+    sleep 1
+done
 
 echo ""
 echo "🗄️  Running database migrations..."
