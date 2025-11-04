@@ -267,16 +267,15 @@ frontend/src/
 
 ## 📈 Future Enhancement Ideas
 
-1. **Payment Integration**: Stripe/PayPal for paid courses
-2. **Video Upload**: Direct video upload with encoding
-3. **Live Classes**: WebRTC for real-time sessions
-4. **Certificates**: PDF certificate generation
-5. **Social Features**: Comments, ratings, reviews
-6. **Advanced Analytics**: Charts and graphs
-7. **Notifications**: Email and push notifications
-8. **Mobile App**: React Native version
-9. **Real AI Integration**: OpenAI GPT-4 integration
-10. **Content Recommendations**: ML-based suggestions
+1. **Video Upload**: Direct video upload with encoding
+2. **Live Classes**: WebRTC for real-time sessions
+3. **Certificates**: PDF certificate generation
+4. **Social Features**: Comments, ratings, reviews
+5. **Advanced Analytics**: Charts and graphs
+6. **Notifications**: Email and push notifications
+7. **Mobile App**: React Native version
+8. **Real AI Integration**: OpenAI GPT-4 integration
+9. **Content Recommendations**: ML-based suggestions
 
 ## 📝 Documentation Files
 

@@ -237,7 +237,6 @@ FUTURE ENHANCEMENTS
 ================================================================================
 
 Suggested improvements:
-  - Payment integration (Stripe/PayPal)
   - Video upload with encoding
   - Real-time chat (WebRTC)
   - Certificate generation
