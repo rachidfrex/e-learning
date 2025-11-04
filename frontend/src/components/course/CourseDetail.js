@@ -11,19 +11,18 @@ const CourseDetail = () => {
   const [enrolling, setEnrolling] = useState(false);
 
   useEffect(() => {
+    const loadCourse = async () => {
+      try {
+        const data = await getCourse(id);
+        setCourse(data.data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error loading course:', error);
+        setLoading(false);
+      }
+    };
     loadCourse();
   }, [id]);
-
-  const loadCourse = async () => {
-    try {
-      const data = await getCourse(id);
-      setCourse(data.data);
-      setLoading(false);
-    } catch (error) {
-      console.error('Error loading course:', error);
-      setLoading(false);
-    }
-  };
 
   const handleEnroll = async () => {
     try {

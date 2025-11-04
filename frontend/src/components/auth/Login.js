@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login as loginService } from '../services/authService';
-import { AuthContext } from '../context/AuthContext';
+import { login as loginService } from '../../services/authService';
+import { AuthContext } from '../../context/AuthContext';
 import './Auth.css';
 
 const Login = () => {

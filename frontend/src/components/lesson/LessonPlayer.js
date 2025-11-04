@@ -19,21 +19,20 @@ const LessonPlayer = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const loadCourse = async () => {
+      try {
+        const data = await getCourse(courseId);
+        setCourse(data.data);
+        const lesson = data.data.lessons.find(l => l._id === lessonId);
+        setCurrentLesson(lesson);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error loading course:', error);
+        setLoading(false);
+      }
+    };
     loadCourse();
   }, [courseId, lessonId]);
-
-  const loadCourse = async () => {
-    try {
-      const data = await getCourse(courseId);
-      setCourse(data.data);
-      const lesson = data.data.lessons.find(l => l._id === lessonId);
-      setCurrentLesson(lesson);
-      setLoading(false);
-    } catch (error) {
-      console.error('Error loading course:', error);
-      setLoading(false);
-    }
-  };
 
   const handleMarkComplete = async () => {
     try {
