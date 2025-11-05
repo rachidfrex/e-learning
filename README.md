@@ -226,7 +226,6 @@ When registering, users can select:
 
 ## Future Enhancements
 
-- Payment integration for paid courses
 - Video upload functionality
 - Real-time chat between students and instructors
 - Advanced analytics with charts

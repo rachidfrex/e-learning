@@ -265,7 +265,6 @@ db.courses.insertOne({
 - Customize the UI theme
 - Add more course categories
 - Integrate with real AI service (OpenAI)
-- Add payment processing
 - Deploy to production
 
 ## Need Help?

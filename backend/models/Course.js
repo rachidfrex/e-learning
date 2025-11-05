@@ -68,10 +68,6 @@ const CourseSchema = new mongoose.Schema({
   thumbnail: {
     type: String
   },
-  price: {
-    type: Number,
-    default: 0
-  },
   enrolledStudents: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
