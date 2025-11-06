@@ -1,0 +1,96 @@
+{
+  "nav": {
+    "courses": "Cours",
+    "features": "Fonctionnalités",
+    "about": "À propos",
+    "login": "Connexion",
+    "signup": "S'inscrire",
+    "pricing": "Tarifs"
+  },
+  "hero": {
+    "title": "Libérez Votre Potentiel avec l'Apprentissage Alimenté par l'IA",
+    "subtitle": "Découvrez une façon révolutionnaire d'apprendre avec des tuteurs IA personnalisés, des défis interactifs et des cours dans n'importe quelle langue.",
+    "cta": "Commencer Gratuitement",
+    "gendarmerie": "Gendarmerie Royale du Maroc"
+  },
+  "features": {
+    "title": "Pourquoi Choisir E-Learn AI?",
+    "subtitle": "Nous avons construit une plateforme avec des fonctionnalités de pointe pour accélérer votre parcours d'apprentissage et vous aider à atteindre vos objectifs plus rapidement.",
+    "aiTeacher": {
+      "title": "Avatar de Professeur IA",
+      "description": "Obtenez de l'aide et des conseils instantanés de votre tuteur IA personnel, disponible 24/7."
+    },
+    "multilingual": {
+      "title": "Support Multilingue",
+      "description": "Apprenez n'importe quel sujet dans votre langue maternelle avec notre traduction et localisation fluides."
+    },
+    "gamified": {
+      "title": "Défis Gamifiés",
+      "description": "Restez motivé avec des quiz interactifs et des défis qui rendent l'apprentissage amusant."
+    },
+    "dashboard": {
+      "title": "Tableaux de Bord Complets",
+      "description": "Suivez vos progrès et obtenez des informations détaillées avec des tableaux de bord pour les étudiants et les instructeurs."
+    }
+  },
+  "courses": {
+    "title": "Explorez Nos Cours Populaires",
+    "viewCourse": "Voir le Cours",
+    "digitalMarketing": "Masterclass en Marketing Digital",
+    "python": "Bootcamp Python Complet",
+    "graphicDesign": "Fondamentaux du Design Graphique",
+    "publicSpeaking": "L'Art de la Prise de Parole en Public"
+  },
+  "testimonials": {
+    "title": "Ce Que Disent Nos Apprenants",
+    "subtitle": "Écoutez les étudiants et instructeurs qui ont transformé leurs compétences avec E-Learn AI.",
+    "testimonial1": "Le tuteur IA change la donne. Je peux me débloquer à 3 heures du matin sans attendre les heures de bureau. Mes notes n'ont jamais été meilleures!",
+    "testimonial2": "En tant qu'instructeur, le support multilingue m'a permis d'atteindre un public mondial. La plateforme gère toute la complexité de manière transparente.",
+    "testimonial3": "Apprendre une nouvelle compétence ressemblait à un jeu. Les défis sont addictifs et aident vraiment à renforcer les concepts. Hautement recommandé!",
+    "student": "Étudiant",
+    "professor": "Professeur",
+    "developer": "Développeur Aspirant"
+  },
+  "stats": {
+    "title": "Performance et Impact de la Plateforme",
+    "subtitle": "Statistiques en temps réel montrant la portée et l'efficacité de notre plateforme d'apprentissage militaire.",
+    "activeOfficers": "Officiers Actifs",
+    "activeOfficersDesc": "Personnel de formation inscrit",
+    "courses": "Cours de Formation",
+    "coursesDesc": "Programmes militaires spécialisés",
+    "completionRate": "Taux de Réussite",
+    "completionRateDesc": "Moyenne de réussite des cours",
+    "availability": "Accès à la Plateforme",
+    "availabilityDesc": "Formation toujours disponible"
+  },
+  "cta": {
+    "title": "Rejoignez Des Milliers d'Apprenants Aujourd'hui",
+    "subtitle": "Franchissez la prochaine étape de votre parcours éducatif. Inscrivez-vous maintenant et obtenez un accès instantané à notre bibliothèque complète de cours et d'outils alimentés par l'IA.",
+    "button": "S'inscrire Gratuitement"
+  },
+  "footer": {
+    "tagline": "L'avenir de l'éducation, personnalisé pour vous.",
+    "platform": "Plateforme",
+    "legal": "Légal",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation",
+    "contact": "Contact",
+    "rights": "© 2024 E-Learn AI. Tous droits réservés."
+  },
+  "signin": {
+    "title": "Commencez Maintenant",
+    "subtitle": "Inscrivez-vous ou connectez-vous pour accéder à vos cours.",
+    "email": "Adresse e-mail",
+    "password": "Mot de passe",
+    "rememberMe": "Se souvenir de moi",
+    "forgotPassword": "Mot de passe oublié?",
+    "signIn": "Se Connecter",
+    "orContinue": "Ou continuer avec",
+    "google": "Se connecter avec Google",
+    "facebook": "Se connecter avec Facebook",
+    "noAccount": "Vous n'avez pas de compte?",
+    "signUp": "S'inscrire",
+    "heroTitle": "L'Avenir de l'Apprentissage, Personnalisé.",
+    "heroSubtitle": "Rejoignez une communauté de penseurs avant-gardistes. Notre plateforme alimentée par l'IA s'adapte à votre style d'apprentissage unique."
+  }
+}

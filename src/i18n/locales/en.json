@@ -1,0 +1,96 @@
+{
+  "nav": {
+    "courses": "Courses",
+    "features": "Features",
+    "about": "About Us",
+    "login": "Log In",
+    "signup": "Sign Up",
+    "pricing": "Pricing"
+  },
+  "hero": {
+    "title": "Unlock Your Potential with AI-Powered Learning",
+    "subtitle": "Experience a revolutionary way to learn with personalized AI tutors, interactive challenges, and courses in any language.",
+    "cta": "Start Learning for Free",
+    "gendarmerie": "Gendarmerie Royale of Morocco"
+  },
+  "features": {
+    "title": "Why Choose E-Learn AI?",
+    "subtitle": "We've built a platform with cutting-edge features to accelerate your learning journey and help you achieve your goals faster.",
+    "aiTeacher": {
+      "title": "AI Teacher Avatar",
+      "description": "Get instant help and guidance from your personal AI tutor, available 24/7."
+    },
+    "multilingual": {
+      "title": "Multilingual Support",
+      "description": "Learn any subject in your native language with our seamless translation and localization."
+    },
+    "gamified": {
+      "title": "Gamified Challenges",
+      "description": "Stay motivated with interactive quizzes and challenges that make learning fun."
+    },
+    "dashboard": {
+      "title": "Comprehensive Dashboards",
+      "description": "Track your progress and get detailed insights with dashboards for students and instructors."
+    }
+  },
+  "courses": {
+    "title": "Explore Our Popular Courses",
+    "viewCourse": "View Course",
+    "digitalMarketing": "Digital Marketing Masterclass",
+    "python": "Complete Python Bootcamp",
+    "graphicDesign": "Graphic Design Fundamentals",
+    "publicSpeaking": "The Art of Public Speaking"
+  },
+  "testimonials": {
+    "title": "What Our Learners Say",
+    "subtitle": "Hear from students and instructors who have transformed their skills with E-Learn AI.",
+    "testimonial1": "The AI tutor is a game-changer. I can get unstuck at 3 AM without waiting for office hours. My grades have never been better!",
+    "testimonial2": "As an instructor, the multilingual support has allowed me to reach a global audience. The platform handles all the complexity seamlessly.",
+    "testimonial3": "Learning a new skill felt like playing a game. The challenges are addictive and genuinely help reinforce the concepts. Highly recommended!",
+    "student": "Student",
+    "professor": "Professor",
+    "developer": "Aspiring Developer"
+  },
+  "stats": {
+    "title": "Platform Performance & Impact",
+    "subtitle": "Real-time statistics showcasing the reach and effectiveness of our military e-learning platform.",
+    "activeOfficers": "Active Officers",
+    "activeOfficersDesc": "Training personnel enrolled",
+    "courses": "Training Courses",
+    "coursesDesc": "Specialized military programs",
+    "completionRate": "Completion Rate",
+    "completionRateDesc": "Course success average",
+    "availability": "Platform Access",
+    "availabilityDesc": "Always available training"
+  },
+  "cta": {
+    "title": "Join Thousands of Learners Today",
+    "subtitle": "Take the next step in your educational journey. Sign up now and get instant access to our entire library of courses and AI-powered tools.",
+    "button": "Sign Up Now for Free"
+  },
+  "footer": {
+    "tagline": "The future of education, personalized for you.",
+    "platform": "Platform",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact",
+    "rights": "© 2024 E-Learn AI. All rights reserved."
+  },
+  "signin": {
+    "title": "Get Started Now",
+    "subtitle": "Sign up or log in to access your courses.",
+    "email": "Email address",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot your password?",
+    "signIn": "Sign In",
+    "orContinue": "Or continue with",
+    "google": "Sign in with Google",
+    "facebook": "Sign in with Facebook",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign up",
+    "heroTitle": "The Future of Learning, Personalized.",
+    "heroSubtitle": "Join a community of forward-thinkers. Our AI-powered platform adapts to your unique learning style."
+  }
+}
