@@ -1,13 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../contexts/ThemeContext';
-import { Moon, Sun, Globe } from 'lucide-react';
-import { useState } from 'react';
+import { Moon, Sun, Globe, LayoutDashboard, BookOpen, Languages as LanguagesIcon, Users } from 'lucide-react';
 
 const Sidebar = () => {
   const { t, i18n } = useTranslation();
   const { theme, toggleTheme } = useTheme();
+  const location = useLocation();
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
 
   const changeLanguage = (lng) => {
@@ -25,10 +25,21 @@ const Sidebar = () => {
 
   const currentLang = languages.find(lang => lang.code === i18n.language) || languages[0];
 
+  // Helper function to check if a path is active
+  const isActive = (path) => {
+    if (path === '/courses') {
+      return location.pathname.startsWith('/courses');
+    }
+    if (path === '/languages') {
+      return location.pathname.startsWith('/languages');
+    }
+    return location.pathname === path;
+  };
+
   return (
-    <aside className="hidden lg:flex lg:flex-col lg:w-72 xl:w-80 bg-white dark:bg-[#0b2b24] text-gray-900 dark:text-white p-6 gap-6 h-screen sticky top-0 border-r border-gray-200 dark:border-[#204b40]">
-      <div className="flex items-center gap-4">
-        <div className="size-8 text-primary">
+    <aside className="hidden lg:flex lg:flex-col lg:w-56 xl:w-64 bg-white dark:bg-[#0b2b24] text-gray-900 dark:text-white p-4 gap-6 h-screen sticky top-0 border-r border-gray-200 dark:border-[#204b40]">
+      <div className="flex items-center gap-3">
+        <div className="size-7 text-primary">
           <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
             <g clipPath="url(#clip0_6_330)">
               <path clipRule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fillRule="evenodd"></path>
@@ -41,15 +52,56 @@ const Sidebar = () => {
           </svg>
         </div>
         <div>
-          <h3 className="text-gray-900 dark:text-white text-lg font-bold">LearnAI</h3>
-          <p className="text-primary text-sm">{t('hero.gendarmerie')}</p>
+          <h3 className="text-gray-900 dark:text-white text-base font-bold">LearnAI</h3>
+          <p className="text-primary text-xs">{t('hero.gendarmerie')}</p>
         </div>
       </div>
 
-      <nav className="flex flex-col gap-2 mt-6">
-        <Link to="/courses" className="px-3 py-2 rounded-lg text-sm hover:bg-gray-100 dark:hover:bg-white/5 text-gray-700 dark:text-white transition-colors">{t('nav.courses')}</Link>
-        <Link to="/dashboard" className="px-3 py-2 rounded-lg text-sm bg-primary/10 text-primary font-semibold">{t('dashboard.dashboard')}</Link>
-        <Link to="/community" className="px-3 py-2 rounded-lg text-sm hover:bg-gray-100 dark:hover:bg-white/5 text-gray-700 dark:text-white transition-colors">{t('dashboard.community')}</Link>
+      <nav className="flex flex-col gap-1 mt-4">
+        <Link 
+          to="/dashboard" 
+          className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
+            isActive('/dashboard') 
+              ? 'bg-primary/10 text-primary font-semibold' 
+              : 'hover:bg-gray-100 dark:hover:bg-white/5 text-gray-700 dark:text-white'
+          }`}
+        >
+          <LayoutDashboard size={18} />
+          <span>{t('dashboard.dashboard')}</span>
+        </Link>
+        <Link 
+          to="/courses" 
+          className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
+            isActive('/courses') 
+              ? 'bg-primary/10 text-primary font-semibold' 
+              : 'hover:bg-gray-100 dark:hover:bg-white/5 text-gray-700 dark:text-white'
+          }`}
+        >
+          <BookOpen size={18} />
+          <span>{t('nav.courses')}</span>
+        </Link>
+        <Link 
+          to="/languages" 
+          className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
+            isActive('/languages') 
+              ? 'bg-primary/10 text-primary font-semibold' 
+              : 'hover:bg-gray-100 dark:hover:bg-white/5 text-gray-700 dark:text-white'
+          }`}
+        >
+          <LanguagesIcon size={18} />
+          <span>{t('nav.languages')}</span>
+        </Link>
+        <Link 
+          to="/community" 
+          className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
+            isActive('/community') 
+              ? 'bg-primary/10 text-primary font-semibold' 
+              : 'hover:bg-gray-100 dark:hover:bg-white/5 text-gray-700 dark:text-white'
+          }`}
+        >
+          <Users size={18} />
+          <span>{t('dashboard.community')}</span>
+        </Link>
       </nav>
 
       <div className="flex flex-col gap-2 mt-4">

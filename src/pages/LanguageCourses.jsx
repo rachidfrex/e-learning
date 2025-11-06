@@ -1,164 +1,184 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Search, Filter, Grid3x3, List, Star, Clock, Users, BookOpen, ChevronDown } from 'lucide-react';
+import { Search, Filter, Grid3x3, List, Star, Clock, Users, BookOpen, ChevronDown, Languages } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import AIChat from '../components/AIChat';
 
-const CourseCatalog = () => {
+const LanguageCourses = () => {
   const { t } = useTranslation();
-  const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'list'
+  const [viewMode, setViewMode] = useState('grid');
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedLanguage, setSelectedLanguage] = useState('all');
   const [selectedLevel, setSelectedLevel] = useState('all');
-  const [sortBy, setSortBy] = useState('popular');
 
-  const categories = [
-    { id: 'all', name: t('categories.all') },
-    { id: 'military-correspondence', name: t('categories.militaryCorrespondence') },
-    { id: 'transmission', name: t('categories.transmission') },
-    { id: 'igtd', name: 'IGTD' },
-    { id: 'tactics', name: t('categories.tactics') },
-    { id: 'leadership', name: t('categories.leadership') },
-    { id: 'operations', name: t('categories.operations') }
+  const languages = [
+    { id: 'all', name: t('languages.all') },
+    { id: 'arabic', name: t('languages.arabic'), flag: '🇸🇦' },
+    { id: 'english', name: t('languages.english'), flag: '🇺🇸' },
+    { id: 'french', name: t('languages.french'), flag: '🇫🇷' }
   ];
 
   const levels = [
-    { id: 'all', name: 'All Levels' },
-    { id: 'beginner', name: 'Beginner' },
-    { id: 'intermediate', name: 'Intermediate' },
-    { id: 'advanced', name: 'Advanced' }
+    { id: 'all', name: t('levels.all') },
+    { id: 'beginner', name: t('levels.beginner') },
+    { id: 'intermediate', name: t('levels.intermediate') },
+    { id: 'advanced', name: t('levels.advanced') }
   ];
 
-  const courses = [
+  const languageCourses = [
     {
       id: 1,
-      slug: 'military-correspondence-fundamentals',
-      title: 'أساسيات المراسلات العسكرية',
-      instructor: 'العقيد أحمد حسن',
-      image: 'https://images.unsplash.com/photo-1586892478025-2b5472316f22?w=500&h=300&fit=crop',
-      rating: 4.8,
-      reviews: 15000,
-      students: 45000,
-      duration: '16h',
-      lessons: 48,
+      slug: 'introduction-to-english',
+      title: 'Introduction to English',
+      instructor: 'Captain John Miller',
+      image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500&h=300&fit=crop',
+      rating: 4.9,
+      reviews: 28000,
+      students: 95000,
+      duration: '20h',
+      lessons: 65,
       level: 'Beginner',
-      category: 'military-correspondence',
-      description: 'تعلم أساسيات المراسلات العسكرية والبروتوكولات والوثائق الرسمية'
+      language: 'english',
+      description: 'Learn English fundamentals for professional military communication',
+      features: ['Basic Grammar', 'Essential Vocabulary', 'Simple Conversations', 'Pronunciation']
     },
     {
       id: 2,
-      slug: 'transmission-systems-basics',
-      title: 'Transmission Systems Basics',
-      instructor: 'Major Sarah Williams',
-      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=300&fit=crop',
-      rating: 4.9,
-      reviews: 12000,
-      students: 38000,
-      duration: '24h',
-      lessons: 72,
+      slug: 'english-military-communication',
+      title: 'English for Military Communication',
+      instructor: 'Major Robert Smith',
+      image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=500&h=300&fit=crop',
+      rating: 4.8,
+      reviews: 32000,
+      students: 120000,
+      duration: '28h',
+      lessons: 96,
       level: 'Intermediate',
-      category: 'transmission',
-      description: 'Master military transmission systems, radio communications, and secure networks'
+      language: 'english',
+      description: 'Master English for military operations and international communications',
+      features: ['Military Terms', 'Radio Communications', 'Report Writing', 'NATO Phonetic Alphabet']
     },
     {
       id: 3,
-      slug: 'igtd-complete-course',
-      title: 'Formation IGTD Complète',
-      instructor: 'Lieutenant-Colonel Jean Dupont',
-      image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=500&h=300&fit=crop',
+      slug: 'french-military-operations',
+      title: 'Français pour Opérations Militaires',
+      instructor: 'Capitaine Marie Dubois',
+      image: 'https://images.unsplash.com/photo-1549877452-9c387954fbc2?w=500&h=300&fit=crop',
       rating: 4.7,
-      reviews: 9500,
-      students: 28000,
+      reviews: 18000,
+      students: 62000,
       duration: '32h',
-      lessons: 96,
-      level: 'Advanced',
-      category: 'igtd',
-      description: 'Formation complète IGTD pour les opérations militaires modernes'
+      lessons: 108,
+      level: 'Intermediate',
+      language: 'french',
+      description: 'Apprendre le français pour les contextes militaires et les missions internationales',
+      features: ['Vocabulaire Militaire', 'Opérations de Terrain', 'Traduction de Documents', 'Régions Francophones']
     },
     {
       id: 4,
-      slug: 'tactical-operations-planning',
-      title: 'تخطيط العمليات التكتيكية',
-      instructor: 'العميد محمد علي',
-      image: 'https://images.unsplash.com/photo-1589391886645-d51941baf7fb?w=500&h=300&fit=crop',
+      slug: 'advanced-arabic-military',
+      title: 'العربية المتقدمة للعسكريين',
+      instructor: 'العقيد حسن خليل',
+      image: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=500&h=300&fit=crop',
       rating: 4.9,
-      reviews: 18000,
-      students: 52000,
-      duration: '28h',
-      lessons: 84,
+      reviews: 15000,
+      students: 48000,
+      duration: '40h',
+      lessons: 144,
       level: 'Advanced',
-      category: 'tactics',
-      description: 'استراتيجيات التخطيط والتنفيذ التكتيكي المتقدم'
+      language: 'arabic',
+      description: 'العربية المتقدمة للعمليات العسكرية المعقدة والمفاوضات',
+      features: ['الترجمة التقنية', 'المفاوضات', 'الاتصالات الاستراتيجية', 'اللهجات الإقليمية']
     },
     {
       id: 5,
-      slug: 'military-leadership-essentials',
-      title: 'Military Leadership Essentials',
-      instructor: 'Colonel David Martinez',
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop',
+      slug: 'english-nato-standards',
+      title: 'English: NATO Standards',
+      instructor: 'Lt. Col. James Wilson',
+      image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500&h=300&fit=crop',
       rating: 4.8,
-      reviews: 21000,
-      students: 67000,
-      duration: '20h',
-      lessons: 60,
-      level: 'Intermediate',
-      category: 'leadership',
-      description: 'Develop essential military leadership skills and command principles'
+      reviews: 28000,
+      students: 95000,
+      duration: '24h',
+      lessons: 80,
+      level: 'Advanced',
+      language: 'english',
+      description: 'Master NATO standard English for international military cooperation',
+      features: ['NATO Terminology', 'Joint Operations', 'Briefing Skills', 'International Protocol']
     },
     {
       id: 6,
-      slug: 'operations-management-military',
-      title: 'إدارة العمليات العسكرية',
-      instructor: 'المقدم فاطمة السعيد',
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=300&fit=crop',
+      slug: 'french-peacekeeping-missions',
+      title: 'Français pour Missions de Maintien de la Paix',
+      instructor: 'Major Sophie Laurent',
+      image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=500&h=300&fit=crop',
       rating: 4.7,
-      reviews: 14000,
+      reviews: 12000,
       students: 41000,
       duration: '26h',
-      lessons: 78,
-      level: 'Advanced',
-      category: 'operations',
-      description: 'تعلم إدارة وتنسيق العمليات العسكرية الشاملة'
+      lessons: 88,
+      level: 'Intermediate',
+      language: 'french',
+      description: 'Compétences linguistiques en français pour les opérations de maintien de la paix',
+      features: ['Terminologie ONU', 'Opérations Humanitaires', 'Engagement Local', 'Communication de Crise']
     },
     {
       id: 7,
-      slug: 'advanced-military-correspondence',
-      title: 'المراسلات العسكرية المتقدمة',
-      instructor: 'الرائد كريم بن علي',
-      image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=500&h=300&fit=crop',
+      slug: 'arabic-dialects-middle-east',
+      title: 'اللهجات العربية: الشرق الأوسط',
+      instructor: 'د. نادية إبراهيم',
+      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=300&fit=crop',
       rating: 4.8,
-      reviews: 11000,
-      students: 34000,
-      duration: '18h',
-      lessons: 54,
+      reviews: 19000,
+      students: 67000,
+      duration: '36h',
+      lessons: 132,
       level: 'Advanced',
-      category: 'military-correspondence',
-      description: 'إتقان الكتابة العسكرية المتقدمة والتقارير والاتصالات الرسمية'
+      language: 'arabic',
+      description: 'إتقان اللهجات العربية في الشرق الأوسط للعمليات الميدانية',
+      features: ['اللهجة الخليجية', 'العربية الشامية', 'العربية المصرية', 'الفروق الثقافية']
     },
     {
       id: 8,
-      slug: 'secure-transmission-protocols',
-      title: 'Protocoles de Transmission Sécurisés',
-      instructor: 'Capitaine Lisa Chen',
-      image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=500&h=300&fit=crop',
+      slug: 'english-technical-writing',
+      title: 'English Technical Writing for Military',
+      instructor: 'Major Emily Carter',
+      image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500&h=300&fit=crop',
       rating: 4.9,
-      reviews: 13500,
-      students: 39000,
+      reviews: 24000,
+      students: 78000,
       duration: '22h',
-      lessons: 66,
+      lessons: 72,
       level: 'Advanced',
-      category: 'transmission',
-      description: 'Apprendre les protocoles de communication militaire sécurisés et le cryptage'
+      language: 'english',
+      description: 'Master technical writing for military reports and documentation',
+      features: ['Report Writing', 'Technical Documentation', 'After-Action Reviews', 'Strategic Briefs']
+    },
+    {
+      id: 9,
+      slug: 'french-african-operations',
+      title: 'Français pour Opérations Africaines',
+      instructor: 'Colonel Pierre Kamara',
+      image: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=500&h=300&fit=crop',
+      rating: 4.7,
+      reviews: 14000,
+      students: 52000,
+      duration: '30h',
+      lessons: 100,
+      level: 'Intermediate',
+      language: 'french',
+      description: 'Langue française pour les opérations militaires en Afrique francophone',
+      features: ['Français Africain', 'Coutumes Locales', 'Sécurité Régionale', 'Engagement Communautaire']
     }
   ];
 
   // Filter courses
-  const filteredCourses = courses.filter(course => {
+  const filteredCourses = languageCourses.filter(course => {
     const matchesSearch = course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          course.instructor.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = selectedCategory === 'all' || course.category === selectedCategory;
+    const matchesLanguage = selectedLanguage === 'all' || course.language === selectedLanguage;
     const matchesLevel = selectedLevel === 'all' || course.level.toLowerCase() === selectedLevel;
-    return matchesSearch && matchesCategory && matchesLevel;
+    return matchesSearch && matchesLanguage && matchesLevel;
   });
 
   return (
@@ -166,11 +186,17 @@ const CourseCatalog = () => {
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
-            {t('courses.militaryTraining')}
-          </h1>
-          <p className="text-gray-600 dark:text-white/60">
-            {t('courses.discoverCourses', { count: courses.length })}
+          <div className="flex items-center gap-3 mb-3">
+            <Languages className="text-primary" size={40} />
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
+              Language Courses / دورات اللغات
+            </h1>
+          </div>
+          <p className="text-gray-600 dark:text-white/60 text-lg">
+            Master Arabic, English, and French for military operations / إتقان العربية والإنجليزية والفرنسية للعمليات العسكرية
+          </p>
+          <p className="text-primary font-semibold mt-2">
+            {languageCourses.length} specialized language courses available
           </p>
         </div>
 
@@ -183,7 +209,7 @@ const CourseCatalog = () => {
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-white/50" size={20} />
                 <input
                   type="text"
-                  placeholder="Search courses..."
+                  placeholder="Search language courses... / ابحث عن دورات اللغات..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-[#17362d] border-2 border-gray-200 dark:border-[#2e6b5b] rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/50 focus:outline-none focus:border-primary transition-colors"
@@ -191,16 +217,18 @@ const CourseCatalog = () => {
               </div>
             </div>
 
-            {/* Category Filter */}
+            {/* Language Filter */}
             <div className="md:col-span-3">
               <div className="relative">
                 <select
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  value={selectedLanguage}
+                  onChange={(e) => setSelectedLanguage(e.target.value)}
                   className="w-full px-4 py-3 bg-gray-50 dark:bg-[#17362d] border-2 border-gray-200 dark:border-[#2e6b5b] rounded-lg text-gray-900 dark:text-white focus:outline-none focus:border-primary transition-colors appearance-none cursor-pointer"
                 >
-                  {categories.map(cat => (
-                    <option key={cat.id} value={cat.id}>{cat.name}</option>
+                  {languages.map(lang => (
+                    <option key={lang.id} value={lang.id}>
+                      {lang.flag ? `${lang.flag} ${lang.name}` : lang.name}
+                    </option>
                   ))}
                 </select>
                 <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-white/50 pointer-events-none" size={20} />
@@ -225,10 +253,28 @@ const CourseCatalog = () => {
           </div>
         </div>
 
+        {/* Info Banner */}
+        <div className="bg-gradient-to-r from-primary/10 to-primary/5 border-l-4 border-primary rounded-lg p-6 mb-8">
+          <div className="flex items-start gap-4">
+            <Languages className="text-primary flex-shrink-0 mt-1" size={24} />
+            <div>
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                Why Language Training Matters / أهمية التدريب اللغوي
+              </h3>
+              <p className="text-gray-700 dark:text-white/80">
+                Language skills are crucial for international military operations, coalition building, and effective communication in diverse environments. Our courses combine military terminology with practical field scenarios.
+              </p>
+              <p className="text-gray-700 dark:text-white/80 mt-2" dir="rtl">
+                المهارات اللغوية ضرورية للعمليات العسكرية الدولية وبناء التحالفات والتواصل الفعال في البيئات المتنوعة. تجمع دوراتنا بين المصطلحات العسكرية والسيناريوهات الميدانية العملية.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Results Header */}
         <div className="flex items-center justify-between mb-6">
           <div className="text-gray-600 dark:text-white/60">
-            <span className="font-semibold text-gray-900 dark:text-white">{filteredCourses.length}</span> courses found
+            <span className="font-semibold text-gray-900 dark:text-white">{filteredCourses.length}</span> language courses found
           </div>
 
           <div className="flex items-center gap-3">
@@ -250,13 +296,13 @@ const CourseCatalog = () => {
           </div>
         </div>
 
-        {/* Courses Grid/List */}
+        {/* Courses Grid */}
         {viewMode === 'grid' ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredCourses.map(course => (
               <Link
                 key={course.id}
-                to={`/courses/${course.slug}`}
+                to={`/languages/${course.slug}`}
                 className="group bg-white dark:bg-[#204b40]/50 rounded-xl overflow-hidden border border-gray-200 dark:border-primary/10 hover:shadow-xl transition-all"
               >
                 {/* Course Image */}
@@ -266,14 +312,14 @@ const CourseCatalog = () => {
                     alt={course.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
+                  <div className="absolute top-3 left-3 bg-primary text-[#0f241e] px-3 py-1 rounded-full text-sm font-bold">
+                    {languages.find(l => l.id === course.language)?.flag} {course.language.toUpperCase()}
+                  </div>
                 </div>
 
                 {/* Course Info */}
                 <div className="p-5">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="px-2 py-1 bg-primary/10 text-primary text-xs font-semibold rounded">
-                      {course.category}
-                    </span>
                     <span className="px-2 py-1 bg-gray-100 dark:bg-[#17362d] text-gray-700 dark:text-white/70 text-xs font-semibold rounded">
                       {course.level}
                     </span>
@@ -295,7 +341,7 @@ const CourseCatalog = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-white/60">
+                  <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-white/60 mb-4">
                     <div className="flex items-center gap-1">
                       <Clock size={16} />
                       <span>{course.duration}</span>
@@ -304,6 +350,15 @@ const CourseCatalog = () => {
                       <BookOpen size={16} />
                       <span>{course.lessons} lessons</span>
                     </div>
+                  </div>
+
+                  {/* Features */}
+                  <div className="flex flex-wrap gap-1">
+                    {course.features.slice(0, 2).map((feature, idx) => (
+                      <span key={idx} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">
+                        {feature}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </Link>
@@ -314,7 +369,7 @@ const CourseCatalog = () => {
             {filteredCourses.map(course => (
               <Link
                 key={course.id}
-                to={`/courses/${course.slug}`}
+                to={`/languages/${course.slug}`}
                 className="group bg-white dark:bg-[#204b40]/50 rounded-xl overflow-hidden border border-gray-200 dark:border-primary/10 hover:shadow-xl transition-all flex flex-col md:flex-row"
               >
                 {/* Course Image */}
@@ -324,14 +379,14 @@ const CourseCatalog = () => {
                     alt={course.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
+                  <div className="absolute top-3 left-3 bg-primary text-[#0f241e] px-3 py-1 rounded-full text-sm font-bold">
+                    {languages.find(l => l.id === course.language)?.flag} {course.language.toUpperCase()}
+                  </div>
                 </div>
 
                 {/* Course Info */}
                 <div className="p-5 flex-1">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="px-2 py-1 bg-primary/10 text-primary text-xs font-semibold rounded">
-                      {course.category}
-                    </span>
                     <span className="px-2 py-1 bg-gray-100 dark:bg-[#17362d] text-gray-700 dark:text-white/70 text-xs font-semibold rounded">
                       {course.level}
                     </span>
@@ -348,6 +403,14 @@ const CourseCatalog = () => {
                   <p className="text-gray-700 dark:text-white/80 mb-4">
                     {course.description}
                   </p>
+
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {course.features.map((feature, idx) => (
+                      <span key={idx} className="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full font-semibold">
+                        ✓ {feature}
+                      </span>
+                    ))}
+                  </div>
 
                   <div className="flex items-center gap-6 text-sm text-gray-600 dark:text-white/60">
                     <div className="flex items-center gap-1">
@@ -381,7 +444,7 @@ const CourseCatalog = () => {
               <Search size={64} className="mx-auto" />
             </div>
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-              No courses found
+              No language courses found
             </h3>
             <p className="text-gray-600 dark:text-white/60">
               Try adjusting your search or filters
@@ -396,4 +459,4 @@ const CourseCatalog = () => {
   );
 };
 
-export default CourseCatalog;
+export default LanguageCourses;

@@ -7,9 +7,13 @@
 
 @layer base {
   :root {
-    --primary: #00ffbb;
+    --primary: #00b386;
     --background-light: #f5f8f8;
     --background-dark: #0f231e;
+  }
+
+  .dark {
+    --primary: #00ffbb;
   }
 
   body {

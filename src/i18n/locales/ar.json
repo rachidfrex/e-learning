@@ -5,7 +5,8 @@
     "about": "من نحن",
     "login": "تسجيل الدخول",
     "signup": "التسجيل",
-    "pricing": "الأسعار"
+    "pricing": "الأسعار",
+    "languages": "اللغات"
   },
   "hero": {
     "title": "أطلق العنان لإمكانياتك مع التعلم المدعوم بالذكاء الاصطناعي",
@@ -39,7 +40,29 @@
     "digitalMarketing": "ماستركلاس التسويق الرقمي",
     "python": "بوتكامب بايثون الكامل",
     "graphicDesign": "أساسيات التصميم الجرافيكي",
-    "publicSpeaking": "فن الخطابة العامة"
+    "publicSpeaking": "فن الخطابة العامة",
+    "militaryTraining": "الدورات التدريبية العسكرية",
+    "discoverCourses": "اكتشف {{count}} دورة عسكرية متخصصة"
+  },
+  "categories": {
+    "all": "كل الدورات",
+    "militaryCorrespondence": "المراسلات العسكرية",
+    "transmission": "الاتصالات",
+    "tactics": "التكتيكات",
+    "leadership": "القيادة",
+    "operations": "العمليات"
+  },
+  "languages": {
+    "all": "كل اللغات",
+    "arabic": "العربية",
+    "english": "الإنجليزية",
+    "french": "الفرنسية"
+  },
+  "levels": {
+    "all": "كل المستويات",
+    "beginner": "مبتدئ",
+    "intermediate": "متوسط",
+    "advanced": "متقدم"
   },
   "testimonials": {
     "title": "ماذا يقول متعلمونا",
@@ -99,6 +122,12 @@
     "continueLearning": "متابعة التعلم",
     "pythonCourse": "بايثون للمبتدئين",
     "pythonModule": "الوحدة 2: إتقان المتغيرات وأنواع البيانات",
+    "militaryCorrespondence": "المراسلات العسكرية",
+    "module3": "الوحدة 3: الوثائق الرسمية",
+    "transmissionSystems": "أنظمة الاتصالات",
+    "tacticalOperations": "العمليات التكتيكية",
+    "militaryLeadership": "القيادة العسكرية",
+    "introductionToEnglish": "مقدمة في اللغة الإنجليزية",
     "startLesson": "بدء الدرس",
     "myCourses": "دوراتي",
     "dataScience": "أساسيات علم البيانات",

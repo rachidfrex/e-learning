@@ -5,7 +5,8 @@
     "about": "À propos",
     "login": "Connexion",
     "signup": "S'inscrire",
-    "pricing": "Tarifs"
+    "pricing": "Tarifs",
+    "languages": "Langues"
   },
   "hero": {
     "title": "Libérez Votre Potentiel avec l'Apprentissage Alimenté par l'IA",
@@ -39,7 +40,29 @@
     "digitalMarketing": "Masterclass en Marketing Digital",
     "python": "Bootcamp Python Complet",
     "graphicDesign": "Fondamentaux du Design Graphique",
-    "publicSpeaking": "L'Art de la Prise de Parole en Public"
+    "publicSpeaking": "L'Art de la Prise de Parole en Public",
+    "militaryTraining": "Cours de Formation Militaire",
+    "discoverCourses": "Découvrez {{count}} cours militaires spécialisés"
+  },
+  "categories": {
+    "all": "Tous les Cours",
+    "militaryCorrespondence": "Correspondance Militaire",
+    "transmission": "Transmission",
+    "tactics": "Tactiques",
+    "leadership": "Leadership",
+    "operations": "Opérations"
+  },
+  "languages": {
+    "all": "Toutes les Langues",
+    "arabic": "Arabe",
+    "english": "Anglais",
+    "french": "Français"
+  },
+  "levels": {
+    "all": "Tous les Niveaux",
+    "beginner": "Débutant",
+    "intermediate": "Intermédiaire",
+    "advanced": "Avancé"
   },
   "testimonials": {
     "title": "Ce Que Disent Nos Apprenants",
@@ -99,6 +122,12 @@
     "continueLearning": "CONTINUER L'APPRENTISSAGE",
     "pythonCourse": "Python pour Débutants",
     "pythonModule": "Module 2: Maîtriser les Variables et Types de Données",
+    "militaryCorrespondence": "Correspondance Militaire",
+    "module3": "Module 3: Documentation Officielle",
+    "transmissionSystems": "Systèmes de Transmission",
+    "tacticalOperations": "Opérations Tactiques",
+    "militaryLeadership": "Leadership Militaire",
+    "introductionToEnglish": "Introduction à l'Anglais",
     "startLesson": "Commencer la Leçon",
     "myCourses": "Mes Cours",
     "dataScience": "Fondamentaux de la Science des Données",

@@ -5,7 +5,8 @@
     "about": "About Us",
     "login": "Log In",
     "signup": "Sign Up",
-    "pricing": "Pricing"
+    "pricing": "Pricing",
+    "languages": "Languages"
   },
   "hero": {
     "title": "Unlock Your Potential with AI-Powered Learning",
@@ -39,7 +40,29 @@
     "digitalMarketing": "Digital Marketing Masterclass",
     "python": "Complete Python Bootcamp",
     "graphicDesign": "Graphic Design Fundamentals",
-    "publicSpeaking": "The Art of Public Speaking"
+    "publicSpeaking": "The Art of Public Speaking",
+    "militaryTraining": "Military Training Courses",
+    "discoverCourses": "Discover {{count}} specialized military courses"
+  },
+  "categories": {
+    "all": "All Courses",
+    "militaryCorrespondence": "Military Correspondence",
+    "transmission": "Transmission",
+    "tactics": "Tactics",
+    "leadership": "Leadership",
+    "operations": "Operations"
+  },
+  "languages": {
+    "all": "All Languages",
+    "arabic": "Arabic",
+    "english": "English",
+    "french": "French"
+  },
+  "levels": {
+    "all": "All Levels",
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced"
   },
   "testimonials": {
     "title": "What Our Learners Say",
@@ -99,6 +122,12 @@
     "continueLearning": "CONTINUE LEARNING",
     "pythonCourse": "Python for Beginners",
     "pythonModule": "Module 2: Mastering Variables and Data Types",
+    "militaryCorrespondence": "Military Correspondence",
+    "module3": "Module 3: Official Documentation",
+    "transmissionSystems": "Transmission Systems",
+    "tacticalOperations": "Tactical Operations",
+    "militaryLeadership": "Military Leadership",
+    "introductionToEnglish": "Introduction to English",
     "startLesson": "Start Lesson",
     "myCourses": "My Courses",
     "dataScience": "Data Science Fundamentals",

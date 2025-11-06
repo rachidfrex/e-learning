@@ -7,6 +7,7 @@ import StudentDashboard from './pages/StudentDashboard.jsx';
 import CourseCatalog from './pages/CourseCatalog';
 import CourseDetail from './pages/CourseDetail';
 import LessonPlayer from './pages/LessonPlayer';
+import LanguageCourses from './pages/LanguageCourses';
 import './i18n/config';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route path="dashboard" element={<StudentDashboard />} />
             <Route path="courses" element={<CourseCatalog />} />
             <Route path="courses/:slug" element={<CourseDetail />} />
+            <Route path="languages" element={<LanguageCourses />} />
             <Route path="learn/:lessonId" element={<LessonPlayer />} />
           </Route>
         </Routes>

@@ -7,6 +7,7 @@ import {
   List, X, Menu
 } from 'lucide-react';
 import AIChat from '../components/AIChat';
+import ArticleLesson from '../components/ArticleLesson';
 
 const LessonPlayer = () => {
   const { t } = useTranslation();
@@ -18,17 +19,122 @@ const LessonPlayer = () => {
   const [currentTime, setCurrentTime] = useState('0:00');
   const [duration, setDuration] = useState('15:30');
 
-  // Mock lesson data
+  // Mock lesson data - can be 'video' or 'article'
   const lesson = {
     id: 1,
-    title: 'Introduction to Python Variables',
+    type: lessonId === '5' ? 'article' : 'video', // Demo: lesson 5 is an article, others are videos
+    title: lessonId === '5' ? 'Understanding Python Data Types' : 'Introduction to Python Variables',
     courseTitle: 'Complete Python Bootcamp',
     courseSlug: 'python-complete-bootcamp',
     moduleTitle: 'Python Basics',
     videoUrl: 'https://www.youtube.com/embed/rfscVS0vtbw',
     duration: '15:30',
+    readTime: '10 min',
+    wordCount: '2,500',
+    featuredImage: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&h=600&fit=crop',
     description: 'Learn the fundamentals of Python variables, how to declare them, and best practices for naming conventions.',
     completed: false,
+    content: lessonId === '5' ? `
+      <h2>Understanding Python Data Types</h2>
+      <p>Python has several built-in data types that are essential for programming. In this lesson, we'll explore the most commonly used types.</p>
+      
+      <h3>1. Numeric Types</h3>
+      <p>Python supports three numeric types:</p>
+      <ul>
+        <li><strong>int</strong> - Integer numbers (e.g., 5, -3, 1000)</li>
+        <li><strong>float</strong> - Floating point numbers (e.g., 3.14, -0.5, 2.0)</li>
+        <li><strong>complex</strong> - Complex numbers (e.g., 3+5j)</li>
+      </ul>
+
+      <div class="bg-gray-900 text-gray-100 rounded-lg p-4 my-4">
+        <pre><code># Examples of numeric types
+x = 5          # int
+y = 3.14       # float
+z = 1 + 2j     # complex
+
+print(type(x))  # Output: <class 'int'>
+print(type(y))  # Output: <class 'float'>
+print(type(z))  # Output: <class 'complex'></code></pre>
+      </div>
+
+      <h3>2. String Type</h3>
+      <p>Strings are sequences of characters enclosed in quotes. You can use single, double, or triple quotes.</p>
+
+      <div class="bg-gray-900 text-gray-100 rounded-lg p-4 my-4">
+        <pre><code># String examples
+name = "Alice"
+message = 'Hello, World!'
+multiline = """This is a
+multiline
+string"""
+
+print(name)      # Output: Alice
+print(len(name)) # Output: 5</code></pre>
+      </div>
+
+      <h3>3. Boolean Type</h3>
+      <p>Boolean values represent True or False. They are often used in conditional statements.</p>
+
+      <div class="bg-gray-900 text-gray-100 rounded-lg p-4 my-4">
+        <pre><code># Boolean examples
+is_student = True
+has_graduated = False
+
+print(5 > 3)     # Output: True
+print(10 == 5)   # Output: False</code></pre>
+      </div>
+
+      <h3>4. Collection Types</h3>
+      <p>Python provides several collection types for storing multiple values:</p>
+      <ul>
+        <li><strong>List</strong> - Ordered, mutable collection</li>
+        <li><strong>Tuple</strong> - Ordered, immutable collection</li>
+        <li><strong>Set</strong> - Unordered collection of unique elements</li>
+        <li><strong>Dictionary</strong> - Key-value pairs</li>
+      </ul>
+
+      <div class="bg-gray-900 text-gray-100 rounded-lg p-4 my-4">
+        <pre><code># Collection examples
+my_list = [1, 2, 3, 4, 5]
+my_tuple = (1, 2, 3)
+my_set = {1, 2, 3, 4, 5}
+my_dict = {"name": "Alice", "age": 25}
+
+print(my_list[0])   # Output: 1
+print(my_dict["name"]) # Output: Alice</code></pre>
+      </div>
+
+      <h3>Type Conversion</h3>
+      <p>You can convert between different data types using built-in functions:</p>
+
+      <div class="bg-gray-900 text-gray-100 rounded-lg p-4 my-4">
+        <pre><code># Type conversion examples
+x = 5           # int
+y = float(x)    # Convert to float: 5.0
+z = str(x)      # Convert to string: "5"
+
+a = "123"
+b = int(a)      # Convert string to int: 123
+
+print(type(y))  # Output: <class 'float'>
+print(type(z))  # Output: <class 'str'></code></pre>
+      </div>
+
+      <h3>Checking Data Types</h3>
+      <p>Use the <code>type()</code> function to check the data type of any variable:</p>
+
+      <div class="bg-gray-900 text-gray-100 rounded-lg p-4 my-4">
+        <pre><code># Checking types
+x = 5
+print(type(x))           # Output: <class 'int'>
+
+y = "Hello"
+print(type(y))           # Output: <class 'str'>
+
+z = [1, 2, 3]
+print(isinstance(z, list))  # Output: True</code></pre>
+      </div>
+    ` : null,
     transcript: [
       { time: '0:00', text: 'Welcome to this lesson on Python variables. In this video, we\'ll cover everything you need to know about variables in Python.' },
       { time: '0:15', text: 'A variable is a container for storing data values. Unlike other programming languages, Python has no command for declaring a variable.' },
@@ -64,19 +170,19 @@ const LessonPlayer = () => {
       id: 1,
       title: 'Course Introduction',
       lessons: [
-        { id: 1, title: 'Welcome to the Course', duration: '5:30', completed: true },
-        { id: 2, title: 'Setting Up Python', duration: '8:45', completed: true },
-        { id: 3, title: 'Your First Python Program', duration: '6:20', completed: true }
+        { id: 1, title: 'Welcome to the Course', duration: '5:30', type: 'video', completed: true },
+        { id: 2, title: 'Setting Up Python', duration: '8:45', type: 'video', completed: true },
+        { id: 3, title: 'Your First Python Program', duration: '6:20', type: 'video', completed: true }
       ]
     },
     {
       id: 2,
       title: 'Python Basics',
       lessons: [
-        { id: 4, title: 'Introduction to Python Variables', duration: '15:30', completed: false, current: true },
-        { id: 5, title: 'Python Data Types', duration: '12:15', completed: false, locked: false },
-        { id: 6, title: 'String Operations', duration: '18:30', completed: false, locked: false },
-        { id: 7, title: 'Numbers in Python', duration: '10:45', completed: false, locked: false }
+        { id: 4, title: 'Introduction to Python Variables', duration: '15:30', type: 'video', completed: false, current: true },
+        { id: 5, title: 'Understanding Python Data Types', duration: '10 min read', type: 'article', completed: false, locked: false },
+        { id: 6, title: 'String Operations', duration: '18:30', type: 'video', completed: false, locked: false },
+        { id: 7, title: 'Numbers in Python', duration: '10:45', type: 'video', completed: false, locked: false }
       ]
     },
     {
@@ -148,8 +254,9 @@ const LessonPlayer = () => {
                     {module.title}
                   </div>
                   {module.lessons.map((item) => (
-                    <button
+                    <Link
                       key={item.id}
+                      to={`/learn/${item.id}`}
                       className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
                         item.current
                           ? 'bg-primary/20 border border-primary/30'
@@ -161,6 +268,8 @@ const LessonPlayer = () => {
                           <CheckCircle className="text-primary" size={20} />
                         ) : item.locked ? (
                           <Lock className="text-white/30" size={20} />
+                        ) : item.type === 'article' ? (
+                          <FileText className="text-white/50" size={20} />
                         ) : (
                           <Play className="text-white/50" size={20} />
                         )}
@@ -169,9 +278,14 @@ const LessonPlayer = () => {
                         <p className={`text-sm ${item.current ? 'text-white font-semibold' : 'text-white/80'}`}>
                           {item.title}
                         </p>
-                        <p className="text-xs text-white/50">{item.duration}</p>
+                        <div className="flex items-center gap-2">
+                          <p className="text-xs text-white/50">{item.duration}</p>
+                          {item.type === 'article' && (
+                            <span className="text-xs bg-primary/20 text-primary px-1.5 py-0.5 rounded">Article</span>
+                          )}
+                        </div>
                       </div>
-                    </button>
+                    </Link>
                   ))}
                 </div>
               ))}
@@ -181,43 +295,53 @@ const LessonPlayer = () => {
 
         {/* Main Content */}
         <div className="flex-1 flex flex-col overflow-hidden">
-          {/* Video Player */}
-          <div className="relative bg-black aspect-video">
-            {/* Video embed - in production, use proper video player */}
-            <iframe
-              className="w-full h-full"
-              src={lesson.videoUrl}
-              title={lesson.title}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+          {/* Conditional Rendering: Article or Video */}
+          {lesson.type === 'article' ? (
+            <ArticleLesson lesson={lesson} />
+          ) : (
+            <>
+              {/* Video Player */}
+              <div className="relative bg-black aspect-video">
+                {/* Video embed - in production, use proper video player */}
+                <iframe
+                  className="w-full h-full"
+                  src={lesson.videoUrl}
+                  title={lesson.title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
 
-            {/* Custom Controls Overlay (optional) */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 hover:opacity-100 transition-opacity">
-              <div className="flex items-center gap-4">
-                <button className="p-2 hover:bg-white/20 rounded-full transition-colors">
-                  {isPlaying ? <Pause size={24} /> : <Play size={24} />}
-                </button>
-                <div className="flex-1 bg-white/20 rounded-full h-1">
-                  <div className="bg-primary h-1 rounded-full w-1/3"></div>
+                {/* Custom Controls Overlay (optional) */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 hover:opacity-100 transition-opacity">
+                  <div className="flex items-center gap-4">
+                    <button className="p-2 hover:bg-white/20 rounded-full transition-colors">
+                      {isPlaying ? <Pause size={24} /> : <Play size={24} />}
+                    </button>
+                    <div className="flex-1 bg-white/20 rounded-full h-1">
+                      <div className="bg-primary h-1 rounded-full w-1/3"></div>
+                    </div>
+                    <span className="text-sm">{currentTime} / {duration}</span>
+                    <button className="p-2 hover:bg-white/20 rounded-full transition-colors">
+                      <Volume2 size={24} />
+                    </button>
+                    <button className="p-2 hover:bg-white/20 rounded-full transition-colors">
+                      <Settings size={24} />
+                    </button>
+                    <button className="p-2 hover:bg-white/20 rounded-full transition-colors">
+                      <Maximize size={24} />
+                    </button>
+                  </div>
                 </div>
-                <span className="text-sm">{currentTime} / {duration}</span>
-                <button className="p-2 hover:bg-white/20 rounded-full transition-colors">
-                  <Volume2 size={24} />
-                </button>
-                <button className="p-2 hover:bg-white/20 rounded-full transition-colors">
-                  <Settings size={24} />
-                </button>
-                <button className="p-2 hover:bg-white/20 rounded-full transition-colors">
-                  <Maximize size={24} />
-                </button>
               </div>
-            </div>
-          </div>
+            </>
+          )}
 
-          {/* Lesson Title & Navigation */}
-          <div className="bg-[#17362d] border-b border-primary/10 px-6 py-4">
+          {/* Video-specific content: Title, Navigation, and Tabs */}
+          {lesson.type === 'video' && (
+            <>
+              {/* Lesson Title & Navigation */}
+              <div className="bg-[#17362d] border-b border-primary/10 px-6 py-4">
             <div className="flex items-center justify-between gap-4">
               <div className="flex-1">
                 <h1 className="text-xl font-bold mb-1">{lesson.title}</h1>
@@ -364,6 +488,8 @@ const LessonPlayer = () => {
               )}
             </div>
           </div>
+            </>
+          )}
         </div>
       </div>
 

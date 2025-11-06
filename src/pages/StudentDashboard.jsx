@@ -15,9 +15,9 @@ const StudentDashboard = () => {
   ];
 
   const recentActivity = [
-    { type: 'completed', course: 'Python Basics', time: '2 hours ago', icon: Award },
-    { type: 'started', course: 'UI/UX Design', time: '5 hours ago', icon: PlayCircle },
-    { type: 'quiz', course: 'Data Science Quiz', time: 'Yesterday', icon: Target }
+    { type: 'completed', course: t('dashboard.militaryCorrespondence'), time: '2 hours ago', icon: Award },
+    { type: 'started', course: t('dashboard.transmissionSystems'), time: '5 hours ago', icon: PlayCircle },
+    { type: 'quiz', course: t('dashboard.tacticalOperations'), time: 'Yesterday', icon: Target }
   ];
   
   return (
@@ -72,8 +72,8 @@ const StudentDashboard = () => {
                       <p className="text-primary text-xs font-bold uppercase tracking-wider">{t('dashboard.continueLearning')}</p>
                     </div>
                     <div className="flex flex-col gap-2">
-                      <p className="text-gray-900 dark:text-white text-2xl font-bold">{t('dashboard.pythonCourse')}</p>
-                      <p className="text-gray-600 dark:text-[#8dcebd] text-sm">{t('dashboard.pythonModule')}</p>
+                      <p className="text-gray-900 dark:text-white text-2xl font-bold">{t('dashboard.militaryCorrespondence')}</p>
+                      <p className="text-gray-600 dark:text-[#8dcebd] text-sm">{t('dashboard.module3')}</p>
                       <div className="flex items-center gap-4 mt-2">
                         <div className="flex-1">
                           <div className="flex justify-between text-xs mb-1">
@@ -110,9 +110,9 @@ const StudentDashboard = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
                   {/* Course Card 1 - Enhanced */}
                   {[
-                    { name: t('dashboard.dataScience'), progress: 65, img: 'AB6AXuBejzEIEAq9a06rIhDVex0Quim1axsZP9SGj7mj5R9R98kMlDetin7tgMSGEJAyzGKomCQg-I_vPhx_kqtfkgP0xjfoCCPGUtcAUVmSu6wstrQTeFICDeAnnS_drJq8l-o172t3_1GJkQDnH92nHjWtVuhXzc1uxxN_nLrdoPnu2nf1W24I240SBKcsuXyu4Z3JH2Vv91lHb4R7PSrYzr5s_Hmw24ZcsK2k-40fDuBLx0yUoDMmeKTzMpmAzF1Uc-aETXkxNlK6BrE', lessons: 24, duration: '6h 30m' },
-                    { name: t('dashboard.uiuxDesign'), progress: 30, img: 'AB6AXuBGHlTTG6limhppoSZE9WTUIhxp3ZprvpJCACYeC5tBqypq6G9ds3M2Ut_c3IuvL8jm5eblU-WSSK_S2lEVBUldh3vF6eTg2F6XHUMYfTrzf2N-evOXn_CsvDHDzrScFqLxMv3yZD-t_KePPuWrpEAUrPqRZlgLDWOCwGDKVz83rZeg60bAL0SEutxMlQm9n_d48rFWly5CntyK2ncOK-G5OwNryQXSRyIxpmkmjlA_OHxa3_YclslvuML5yrqJsn76Q3UW6NeIisU', lessons: 18, duration: '4h 15m' },
-                    { name: t('dashboard.digitalMarketing'), progress: 95, img: 'AB6AXuAA3ylYRGF-3k3mmCOA6l_1E7oCNLJfirmlLp4T8gOZ4Q0qBgYN1_1Hsvc74GsW8TAK1TuJgBc7c1_3WKImu1BJssaXMCdqd6YsDVBZK7Xh09XOkw9IpYevqMWCxcqWv9bpj4Qlmrb0Da4rNrVl9ca2W0Xveu_4W1lH8DVd1loo2OwngHJtzMRYO_Iw-oJyBYIiLBlIHIExaeCh0SLOEV1Qu24kcjTfiT0R475YjLHV7mJWyZPtULT8SispuFBUq5YWjx59YP22Nu8', lessons: 32, duration: '8h 45m' }
+                    { name: t('dashboard.tacticalOperations'), progress: 65, img: 'AB6AXuBejzEIEAq9a06rIhDVex0Quim1axsZP9SGj7mj5R9R98kMlDetin7tgMSGEJAyzGKomCQg-I_vPhx_kqtfkgP0xjfoCCPGUtcAUVmSu6wstrQTeFICDeAnnS_drJq8l-o172t3_1GJkQDnH92nHjWtVuhXzc1uxxN_nLrdoPnu2nf1W24I240SBKcsuXyu4Z3JH2Vv91lHb4R7PSrYzr5s_Hmw24ZcsK2k-40fDuBLx0yUoDMmeKTzMpmAzF1Uc-aETXkxNlK6BrE', lessons: 24, duration: '6h 30m' },
+                    { name: t('dashboard.transmissionSystems'), progress: 30, img: 'AB6AXuBGHlTTG6limhppoSZE9WTUIhxp3ZprvpJCACYeC5tBqypq6G9ds3M2Ut_c3IuvL8jm5eblU-WSSK_S2lEVBUldh3vF6eTg2F6XHUMYfTrzf2N-evOXn_CsvDHDzrScFqLxMv3yZD-t_KePPuWrpEAUrPqRZlgLDWOCwGDKVz83rZeg60bAL0SEutxMlQm9n_d48rFWly5CntyK2ncOK-G5OwNryQXSRyIxpmkmjlA_OHxa3_YclslvuML5yrqJsn76Q3UW6NeIisU', lessons: 18, duration: '4h 15m' },
+                    { name: t('dashboard.militaryLeadership'), progress: 95, img: 'AB6AXuAA3ylYRGF-3k3mmCOA6l_1E7oCNLJfirmlLp4T8gOZ4Q0qBgYN1_1Hsvc74GsW8TAK1TuJgBc7c1_3WKImu1BJssaXMCdqd6YsDVBZK7Xh09XOkw9IpYevqMWCxcqWv9bpj4Qlmrb0Da4rNrVl9ca2W0Xveu_4W1lH8DVd1loo2OwngHJtzMRYO_Iw-oJyBYIiLBlIHIExaeCh0SLOEV1Qu24kcjTfiT0R475YjLHV7mJWyZPtULT8SispuFBUq5YWjx59YP22Nu8', lessons: 32, duration: '8h 45m' }
                   ].map((course, index) => (
                     <div
                       key={index}
@@ -167,8 +167,8 @@ const StudentDashboard = () => {
                 <h2 className="text-gray-900 dark:text-white text-2xl font-bold pb-6 pt-8">{t('dashboard.recommended')}</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
-                    { title: t('dashboard.advancedDataStructures'), desc: t('dashboard.advancedDataDesc'), img: 'AB6AXuDJnQSntsKgGvfprT3KwWOpcQMyst_d0KpDTtIXnSLhP6bHIapzvX4R64HNQOk-nzxzf-ndzibsFIWiSV9Conm39mJQbSRDZ_ie5Yu95rxDkVs7fOS7OJ7DmA4_TYfeph3WhOf0srzsLIh6jDUYHvXl9t5BTxXWk09XSfCMEDOcc7SxzzRg0m29HyPDV5RoiyaDzJwsOL591B2FTIUjfXfWEF1IKfrqqA8kmprtJ6ptMlDgMg9Y0JjMVBGjbW4uiS0TwikFuB1axaE', color: 'from-blue-500 to-cyan-500' },
-                    { title: t('dashboard.machineLearning'), desc: t('dashboard.machineLearningDesc'), img: 'AB6AXuB18BtHcD7QHMBMbjnO-erJU2-JGNd5qMuy-rAqWDYvWGaaJP1aLhaUbPAz5k9qlcRhTHNTnaO2iePP9a7J7DHW-0Pb84fNF3ENUxN0HeoCGKLynSSt_f_pxgWw7NB6GN9eO2LMKQ8ff1VRg1KlohZ8MWmSOFBCpGK671o2uROpQDklDQ_Yc8LZiHDk84sFyYlBlzrv_g25cZrYyBpE1clb7CI7GKV8NXlOCgyC3jpr257T6H6y5uLtGefx6D0iX4S75khVDGceQFQ', color: 'from-purple-500 to-pink-500' }
+                    { title: t('dashboard.introductionToEnglish'), desc: 'Learn English fundamentals for professional military communication', img: 'AB6AXuDJnQSntsKgGvfprT3KwWOpcQMyst_d0KpDTtIXnSLhP6bHIapzvX4R64HNQOk-nzxzf-ndzibsFIWiSV9Conm39mJQbSRDZ_ie5Yu95rxDkVs7fOS7OJ7DmA4_TYfeph3WhOf0srzsLIh6jDUYHvXl9t5BTxXWk09XSfCMEDOcc7SxzzRg0m29HyPDV5RoiyaDzJwsOL591B2FTIUjfXfWEF1IKfrqqA8kmprtJ6ptMlDgMg9Y0JjMVBGjbW4uiS0TwikFuB1axaE', color: 'from-blue-500 to-cyan-500' },
+                    { title: 'IGTD Training Course', desc: 'Comprehensive IGTD training for modern military operations', img: 'AB6AXuB18BtHcD7QHMBMbjnO-erJU2-JGNd5qMuy-rAqWDYvWGaaJP1aLhaUbPAz5k9qlcRhTHNTnaO2iePP9a7J7DHW-0Pb84fNF3ENUxN0HeoCGKLynSSt_f_pxgWw7NB6GN9eO2LMKQ8ff1VRg1KlohZ8MWmSOFBCpGK671o2uROpQDklDQ_Yc8LZiHDk84sFyYlBlzrv_g25cZrYyBpE1clb7CI7GKV8NXlOCgyC3jpr257T6H6y5uLtGefx6D0iX4S75khVDGceQFQ', color: 'from-purple-500 to-pink-500' }
                   ].map((item, index) => (
                     <div
                       key={index}
