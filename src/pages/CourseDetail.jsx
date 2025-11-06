@@ -5,8 +5,7 @@ import {
   Star, Clock, Users, Globe, Award, PlayCircle, BookOpen, FileText,
   Check, ChevronDown, ChevronUp
 } from 'lucide-react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import AIChat from '../components/AIChat';
 
 const CourseDetail = () => {
   const { t } = useTranslation();
@@ -121,9 +120,7 @@ We'll cover everything from Python basics to advanced topics like object-oriente
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-background-dark">
-      <Navbar />
-
+    <div className="flex-1 overflow-y-auto bg-transparent">
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-[#17362d] to-[#0f231e] text-white">
         <div className="container mx-auto px-4 py-12">
@@ -396,7 +393,8 @@ We'll cover everything from Python basics to advanced topics like object-oriente
         </div>
       </div>
 
-      <Footer />
+      {/* AI Chat Component */}
+      <AIChat />
     </div>
   );
 };

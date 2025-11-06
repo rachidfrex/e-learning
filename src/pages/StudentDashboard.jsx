@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { TrendingUp, Award, Target, Clock, PlayCircle, BookOpen, Calendar, Flame } from 'lucide-react';
 import AIChat from '../components/AIChat';
 
@@ -21,15 +21,10 @@ const StudentDashboard = () => {
   ];
   
   return (
-    <div className="flex-1 overflow-y-auto">
-      <div className="p-6 md:px-10 lg:px-12 xl:px-16">
+    <div className="flex-1 overflow-y-auto bg-transparent">
+      <div className="p-6 md:p-8 lg:p-10">
         {/* Top Header with Stats */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
-        >
+        <div className="mb-8">
           <div className="flex flex-wrap justify-between gap-4 mb-6 items-center">
             <div className="flex flex-col gap-2">
               <p className="text-gray-900 dark:text-white text-4xl font-black">{t('dashboard.welcome')}</p>
@@ -43,44 +38,34 @@ const StudentDashboard = () => {
           {/* Stats Grid */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {statsCards.map((stat, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
                 className="relative group"
               >
                 <div className={`absolute inset-0 bg-gradient-to-r ${stat.color} rounded-xl opacity-0 group-hover:opacity-10 transition-opacity blur-xl`}></div>
-                <div className="relative bg-white dark:bg-[#204b40]/50 p-6 rounded-xl border border-gray-200 dark:border-primary/10 shadow-lg hover:shadow-xl transition-all">
+                <div className="relative bg-white dark:bg-[#204b40]/50 p-5 rounded-xl border border-gray-200 dark:border-primary/10 shadow-sm hover:shadow-md transition-all">
                   <div className="flex items-start justify-between mb-3">
-                    <div className={`p-3 rounded-lg bg-gradient-to-r ${stat.color} bg-opacity-10`}>
-                      <stat.icon className="w-6 h-6 text-primary" />
+                    <div className={`p-2.5 rounded-lg bg-gradient-to-r ${stat.color} bg-opacity-10`}>
+                      <stat.icon className="w-5 h-5 text-primary" />
                     </div>
                     <span className="text-xs font-bold text-green-500 dark:text-green-400 bg-green-500/10 px-2 py-1 rounded-full">
-                        {stat.trend}
-                      </span>
-                    </div>
-                    <p className="text-3xl font-black text-gray-900 dark:text-white mb-1">{stat.value}</p>
-                    <p className="text-sm text-gray-600 dark:text-[#8dcebd] font-medium">{stat.label}</p>
+                      {stat.trend}
+                    </span>
                   </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+                  <p className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-1">{stat.value}</p>
+                  <p className="text-xs md:text-sm text-gray-600 dark:text-[#8dcebd] font-medium">{stat.label}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 flex flex-col gap-6">
-              {/* Continue Learning - Enhanced */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 }}
-                whileHover={{ scale: 1.01 }}
-                className="relative group overflow-hidden"
-              >
+              {/* Continue Learning */}
+              <div className="relative group overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-xl"></div>
-                <div className="relative bg-white dark:bg-[#204b40]/50 p-6 rounded-xl flex flex-col md:flex-row items-stretch justify-between gap-6 border border-gray-200 dark:border-primary/20 shadow-lg">
+                <div className="relative bg-white dark:bg-[#204b40]/50 p-6 rounded-xl flex flex-col md:flex-row items-stretch justify-between gap-6 border border-gray-200 dark:border-primary/20 shadow-sm hover:shadow-md transition-shadow">
                   <div className="flex-1 flex flex-col gap-4 justify-center">
                     <div className="flex items-center gap-2 mb-2">
                       <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
@@ -96,12 +81,7 @@ const StudentDashboard = () => {
                             <span className="text-primary font-bold">45%</span>
                           </div>
                           <div className="w-full bg-gray-200 dark:bg-[#2e6b5b]/50 rounded-full h-2">
-                            <motion.div 
-                              initial={{ width: 0 }}
-                              animate={{ width: '45%' }}
-                              transition={{ duration: 1, delay: 0.5 }}
-                              className="bg-gradient-to-r from-primary to-cyan-500 h-2 rounded-full"
-                            ></motion.div>
+                            <div className="bg-gradient-to-r from-primary to-cyan-500 h-2 rounded-full transition-all duration-500" style={{width: '45%'}}></div>
                           </div>
                         </div>
                         <div className="text-gray-600 dark:text-[#8dcebd] text-xs flex items-center gap-1">
@@ -110,21 +90,17 @@ const StudentDashboard = () => {
                         </div>
                       </div>
                     </div>
-                    <motion.button 
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="inline-flex items-center gap-2 rounded-lg h-11 px-6 bg-gradient-to-r from-primary to-cyan-500 text-[#0f241e] text-sm font-bold hover:shadow-lg hover:shadow-primary/50 transition-all w-fit group"
-                    >
+                    <button className="inline-flex items-center gap-2 rounded-lg h-11 px-6 bg-gradient-to-r from-primary to-cyan-500 text-[#0f241e] text-sm font-bold hover:shadow-lg hover:shadow-primary/50 transition-all w-fit group">
                       <PlayCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
                       <span>{t('dashboard.startLesson')}</span>
-                    </motion.button>
+                    </button>
                   </div>
                   <div className="relative w-full md:w-64 h-48 md:h-auto">
                     <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent rounded-lg"></div>
                     <div className="relative w-full h-full bg-center bg-no-repeat bg-cover rounded-lg" style={{backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuC_wJ0dVhmbb5-_5mu9xUo5bb225wjYmWyWmRWfv3S_E8bnOY7BX24c6iuuqFnHOwW-iPtiaIClOKELn8Qz3_9IkFGgtPNb3nQF9EC_ByA9BtSk7Ors45_D75brlEP_AGNhrawIQo4CMECSJXbCqP6aDNAxKRPvsiE_fBhtSZOz4dO25nZwKApHREgg5jzmi-2dzziJ_WlSoohAwIeiewbM_7vYFkncSot85MQcj0ObtPaFbb_ytG5hwT99-p2Bxs8AG8gBy2cNER4')`}}></div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
               <section>
                 <div className="flex items-center justify-between mb-6">
@@ -138,7 +114,7 @@ const StudentDashboard = () => {
                     { name: t('dashboard.uiuxDesign'), progress: 30, img: 'AB6AXuBGHlTTG6limhppoSZE9WTUIhxp3ZprvpJCACYeC5tBqypq6G9ds3M2Ut_c3IuvL8jm5eblU-WSSK_S2lEVBUldh3vF6eTg2F6XHUMYfTrzf2N-evOXn_CsvDHDzrScFqLxMv3yZD-t_KePPuWrpEAUrPqRZlgLDWOCwGDKVz83rZeg60bAL0SEutxMlQm9n_d48rFWly5CntyK2ncOK-G5OwNryQXSRyIxpmkmjlA_OHxa3_YclslvuML5yrqJsn76Q3UW6NeIisU', lessons: 18, duration: '4h 15m' },
                     { name: t('dashboard.digitalMarketing'), progress: 95, img: 'AB6AXuAA3ylYRGF-3k3mmCOA6l_1E7oCNLJfirmlLp4T8gOZ4Q0qBgYN1_1Hsvc74GsW8TAK1TuJgBc7c1_3WKImu1BJssaXMCdqd6YsDVBZK7Xh09XOkw9IpYevqMWCxcqWv9bpj4Qlmrb0Da4rNrVl9ca2W0Xveu_4W1lH8DVd1loo2OwngHJtzMRYO_Iw-oJyBYIiLBlIHIExaeCh0SLOEV1Qu24kcjTfiT0R475YjLHV7mJWyZPtULT8SispuFBUq5YWjx59YP22Nu8', lessons: 32, duration: '8h 45m' }
                   ].map((course, index) => (
-                    <motion.div
+                    <div
                       key={index}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -149,12 +125,12 @@ const StudentDashboard = () => {
                       <div className="relative bg-white dark:bg-[#204b40]/50 rounded-xl border border-gray-200 dark:border-primary/10 shadow-md hover:shadow-xl transition-all overflow-hidden">
                         <div className="relative w-full aspect-video overflow-hidden">
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
-                          <motion.div 
+                          <div 
                             whileHover={{ scale: 1.1 }}
                             transition={{ duration: 0.3 }}
                             className="w-full h-full bg-center bg-no-repeat bg-cover" 
                             style={{backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/${course.img}')`}}
-                          ></motion.div>
+                          ></div>
                           <div className="absolute bottom-3 left-3 z-20 flex gap-2">
                             <span className="text-xs bg-primary/90 text-[#0f241e] px-2 py-1 rounded-md font-bold">
                               {course.lessons} lessons
@@ -172,17 +148,17 @@ const StudentDashboard = () => {
                               <p className="text-primary text-sm font-bold">{course.progress}%</p>
                             </div>
                             <div className="relative rounded-full bg-gray-200 dark:bg-[#2e6b5b]/50 h-2 overflow-hidden">
-                              <motion.div 
+                              <div 
                                 initial={{ width: 0 }}
                                 animate={{ width: `${course.progress}%` }}
                                 transition={{ duration: 1, delay: 0.5 + index * 0.1 }}
                                 className="h-2 rounded-full bg-gradient-to-r from-primary to-cyan-500"
-                              ></motion.div>
+                              ></div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </section>
@@ -194,7 +170,7 @@ const StudentDashboard = () => {
                     { title: t('dashboard.advancedDataStructures'), desc: t('dashboard.advancedDataDesc'), img: 'AB6AXuDJnQSntsKgGvfprT3KwWOpcQMyst_d0KpDTtIXnSLhP6bHIapzvX4R64HNQOk-nzxzf-ndzibsFIWiSV9Conm39mJQbSRDZ_ie5Yu95rxDkVs7fOS7OJ7DmA4_TYfeph3WhOf0srzsLIh6jDUYHvXl9t5BTxXWk09XSfCMEDOcc7SxzzRg0m29HyPDV5RoiyaDzJwsOL591B2FTIUjfXfWEF1IKfrqqA8kmprtJ6ptMlDgMg9Y0JjMVBGjbW4uiS0TwikFuB1axaE', color: 'from-blue-500 to-cyan-500' },
                     { title: t('dashboard.machineLearning'), desc: t('dashboard.machineLearningDesc'), img: 'AB6AXuB18BtHcD7QHMBMbjnO-erJU2-JGNd5qMuy-rAqWDYvWGaaJP1aLhaUbPAz5k9qlcRhTHNTnaO2iePP9a7J7DHW-0Pb84fNF3ENUxN0HeoCGKLynSSt_f_pxgWw7NB6GN9eO2LMKQ8ff1VRg1KlohZ8MWmSOFBCpGK671o2uROpQDklDQ_Yc8LZiHDk84sFyYlBlzrv_g25cZrYyBpE1clb7CI7GKV8NXlOCgyC3jpr257T6H6y5uLtGefx6D0iX4S75khVDGceQFQ', color: 'from-purple-500 to-pink-500' }
                   ].map((item, index) => (
-                    <motion.div
+                    <div
                       key={index}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -210,16 +186,16 @@ const StudentDashboard = () => {
                         <div className="flex flex-col gap-2 flex-1">
                           <p className="text-gray-900 dark:text-white text-base font-bold group-hover:text-primary transition-colors">{item.title}</p>
                           <p className="text-gray-600 dark:text-[#8dcebd] text-sm line-clamp-2">{item.desc}</p>
-                          <motion.a 
+                          <a 
                             whileHover={{ x: 3 }}
                             className="text-primary text-sm font-bold hover:underline flex items-center gap-1" 
                             href="#"
                           >
                             {t('dashboard.learnMore')} →
-                          </motion.a>
+                          </a>
                         </div>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </section>
@@ -227,7 +203,7 @@ const StudentDashboard = () => {
 
             <aside className="lg:col-span-1 flex flex-col gap-6">
               {/* Recent Activity */}
-              <motion.div
+              <div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4 }}
@@ -239,7 +215,7 @@ const StudentDashboard = () => {
                 </h3>
                 <div className="space-y-4">
                   {recentActivity.map((activity, index) => (
-                    <motion.div
+                    <div
                       key={index}
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -253,13 +229,13 @@ const StudentDashboard = () => {
                         <p className="text-sm font-semibold text-gray-900 dark:text-white truncate">{activity.course}</p>
                         <p className="text-xs text-gray-600 dark:text-[#8dcebd]">{activity.time}</p>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
 
               {/* Upcoming Challenges - Enhanced */}
-              <motion.div
+              <div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5 }}
@@ -267,7 +243,7 @@ const StudentDashboard = () => {
               >
                 <h3 className="text-gray-900 dark:text-white text-xl font-bold mb-4">{t('dashboard.upcomingChallenges')}</h3>
                 <ul className="flex flex-col gap-3">
-                  <motion.li 
+                  <li 
                     whileHover={{ x: 5 }}
                     className="flex items-center gap-3 p-3 rounded-lg bg-orange-500/5 dark:bg-orange-500/10 border border-orange-500/20"
                   >
@@ -278,15 +254,15 @@ const StudentDashboard = () => {
                       <p className="text-gray-900 dark:text-white font-semibold text-sm">{t('dashboard.quiz')}</p>
                       <p className="text-gray-600 dark:text-[#8dcebd] text-xs">{t('dashboard.quizDue')}</p>
                     </div>
-                    <motion.a 
+                    <a 
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                       className="text-primary text-xs font-bold hover:underline px-3 py-1 bg-primary/10 rounded-md" 
                       href="#"
-                    >{t('dashboard.start')}</motion.a>
-                  </motion.li>
+                    >{t('dashboard.start')}</a>
+                  </li>
                   
-                  <motion.li 
+                  <li 
                     whileHover={{ x: 5 }}
                     className="flex items-center gap-3 p-3 rounded-lg bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/20"
                   >
@@ -297,15 +273,15 @@ const StudentDashboard = () => {
                       <p className="text-gray-900 dark:text-white font-semibold text-sm">{t('dashboard.codingChallenge')}</p>
                       <p className="text-gray-600 dark:text-[#8dcebd] text-xs">{t('dashboard.codingDue')}</p>
                     </div>
-                    <motion.a 
+                    <a 
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                       className="text-primary text-xs font-bold hover:underline px-3 py-1 bg-primary/10 rounded-md" 
                       href="#"
-                    >{t('dashboard.view')}</motion.a>
-                  </motion.li>
+                    >{t('dashboard.view')}</a>
+                  </li>
                   
-                  <motion.li 
+                  <li 
                     whileHover={{ x: 5 }}
                     className="flex items-center gap-3 p-3 rounded-lg bg-purple-500/5 dark:bg-purple-500/10 border border-purple-500/20"
                   >
@@ -316,15 +292,15 @@ const StudentDashboard = () => {
                       <p className="text-gray-900 dark:text-white font-semibold text-sm">{t('dashboard.finalProject')}</p>
                       <p className="text-gray-600 dark:text-[#8dcebd] text-xs">{t('dashboard.projectDue')}</p>
                     </div>
-                    <motion.a 
+                    <a 
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                       className="text-primary text-xs font-bold hover:underline px-3 py-1 bg-primary/10 rounded-md" 
                       href="#"
-                    >{t('dashboard.view')}</motion.a>
-                  </motion.li>
+                    >{t('dashboard.view')}</a>
+                  </li>
                 </ul>
-              </motion.div>
+              </div>
             </aside>
           </div>
         </div>
@@ -337,3 +313,5 @@ const StudentDashboard = () => {
 };
 
 export default StudentDashboard;
+
+

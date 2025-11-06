@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Search, Filter, Grid3x3, List, Star, Clock, Users, BookOpen, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import AIChat from '../components/AIChat';
 
 const CourseCatalog = () => {
   const { t } = useTranslation();
@@ -138,9 +137,7 @@ const CourseCatalog = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-background-dark">
-      <Navbar />
-
+    <div className="flex-1 overflow-y-auto bg-transparent">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
@@ -374,7 +371,8 @@ const CourseCatalog = () => {
         )}
       </div>
 
-      <Footer />
+      {/* AI Chat Component */}
+      <AIChat />
     </div>
   );
 };
