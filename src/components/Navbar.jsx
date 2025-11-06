@@ -151,11 +151,15 @@ const Navbar = () => {
           </Link>
 
           <motion.button
+        
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-[#0f241e] text-sm font-bold leading-normal hover:bg-primary/80 transition-colors"
           >
+          
             <span className="truncate">{t('nav.signup')}</span>
+        
+
           </motion.button>
         </div>
       </div>

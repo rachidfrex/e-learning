@@ -359,7 +359,7 @@ const LandingPage = () => {
                     
                     {/* Icon */}
                     <div className={`relative p-4 rounded-full bg-gradient-to-br ${stat.color} bg-opacity-10`}>
-                      <stat.icon className="text-primary" size={32} />
+                      <stat.icon className="" size={32} />
                     </div>
                     
                     {/* Value */}
