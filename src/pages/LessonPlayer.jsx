@@ -204,7 +204,7 @@ const LessonPlayer = () => {
             className="flex items-center gap-2 text-white/70 hover:text-white transition-colors"
           >
             <ChevronLeft size={20} />
-            <span className="hidden md:inline">Back to Course</span>
+            <span className="hidden md:inline">{t('dashboard.backToCourse')}</span>
           </Link>
           <div className="hidden md:block">
             <h2 className="font-bold text-white">{lesson.courseTitle}</h2>

@@ -1,29 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useTheme } from '../contexts/ThemeContext';
-import { Moon, Sun, Globe, LayoutDashboard, BookOpen, Languages as LanguagesIcon, Users } from 'lucide-react';
+import { LayoutDashboard, BookOpen, Languages as LanguagesIcon, Users, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const Sidebar = () => {
-  const { t, i18n } = useTranslation();
-  const { theme, toggleTheme } = useTheme();
+const Sidebar = ({ collapsed, onToggleCollapse }) => {
+  const { t } = useTranslation();
   const location = useLocation();
-  const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
-
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-    localStorage.setItem('language', lng);
-    setIsLangMenuOpen(false);
-    document.documentElement.dir = lng === 'ar' ? 'rtl' : 'ltr';
-  };
-
-  const languages = [
-    { code: 'en', name: 'English', flag: '🇬🇧' },
-    { code: 'fr', name: 'Français', flag: '🇫🇷' },
-    { code: 'ar', name: 'العربية', flag: '🇲🇦' }
-  ];
-
-  const currentLang = languages.find(lang => lang.code === i18n.language) || languages[0];
 
   // Helper function to check if a path is active
   const isActive = (path) => {
@@ -37,121 +19,105 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className="hidden lg:flex lg:flex-col lg:w-56 xl:w-64 bg-white dark:bg-[#0b2b24] text-gray-900 dark:text-white p-4 gap-6 h-screen sticky top-0 border-r border-gray-200 dark:border-[#204b40]">
-      <div className="flex items-center gap-3">
-        <div className="size-7 text-primary">
-          <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-            <g clipPath="url(#clip0_6_330)">
-              <path clipRule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fillRule="evenodd"></path>
-            </g>
-            <defs>
-              <clipPath id="clip0_6_330">
-                <rect fill="white" height="48" width="48"></rect>
-              </clipPath>
-            </defs>
-          </svg>
-        </div>
-        <div>
-          <h3 className="text-gray-900 dark:text-white text-base font-bold">LearnAI</h3>
-          <p className="text-primary text-xs">{t('hero.gendarmerie')}</p>
-        </div>
+    <aside className={`hidden lg:flex lg:flex-col ${collapsed ? 'lg:w-16' : 'lg:w-56 xl:w-64'} bg-white dark:bg-[#0b2b24] text-gray-900 dark:text-white p-4 gap-6 h-screen sticky top-0 border-r border-gray-200 dark:border-[#204b40] transition-all duration-300`}>
+      {/* Logo */}
+      <div className={`flex items-center ${collapsed ? 'justify-center' : 'gap-3'}`}>
+        {!collapsed && (
+          <>
+            <div className="size-7 text-primary">
+              <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                <g clipPath="url(#clip0_6_330)">
+                  <path clipRule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fillRule="evenodd"></path>
+                </g>
+                <defs>
+                  <clipPath id="clip0_6_330">
+                    <rect fill="white" height="48" width="48"></rect>
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+            <div>
+              <h3 className="text-gray-900 dark:text-white text-base font-bold">LearnAI</h3>
+              <p className="text-primary text-xs">{t('hero.gendarmerie')}</p>
+            </div>
+          </>
+        )}
+        {collapsed && (
+          <div className="size-7 text-primary">
+            <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <g clipPath="url(#clip0_6_330)">
+                <path clipRule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fillRule="evenodd"></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_6_330">
+                  <rect fill="white" height="48" width="48"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+        )}
       </div>
 
+      {/* Toggle Button */}
+      <button
+        onClick={onToggleCollapse}
+        className="absolute -right-3 top-20 bg-white dark:bg-[#204b40] border border-gray-200 dark:border-primary/20 rounded-full p-1.5 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors shadow-lg z-10"
+        title={collapsed ? 'Expand' : 'Collapse'}
+      >
+        {collapsed ? <ChevronRight size={16} className="text-gray-700 dark:text-white" /> : <ChevronLeft size={16} className="text-gray-700 dark:text-white" />}
+      </button>
+
+      {/* Navigation */}
       <nav className="flex flex-col gap-1 mt-4">
         <Link 
           to="/dashboard" 
-          className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
+          className={`flex items-center ${collapsed ? 'justify-center' : 'gap-2'} px-3 py-2 rounded-lg text-sm transition-colors ${
             isActive('/dashboard') 
               ? 'bg-primary/10 text-primary font-semibold' 
               : 'hover:bg-gray-100 dark:hover:bg-white/5 text-gray-700 dark:text-white'
           }`}
+          title={collapsed ? t('dashboard.dashboard') : ''}
         >
           <LayoutDashboard size={18} />
-          <span>{t('dashboard.dashboard')}</span>
+          {!collapsed && <span>{t('dashboard.dashboard')}</span>}
         </Link>
         <Link 
           to="/courses" 
-          className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
+          className={`flex items-center ${collapsed ? 'justify-center' : 'gap-2'} px-3 py-2 rounded-lg text-sm transition-colors ${
             isActive('/courses') 
               ? 'bg-primary/10 text-primary font-semibold' 
               : 'hover:bg-gray-100 dark:hover:bg-white/5 text-gray-700 dark:text-white'
           }`}
+          title={collapsed ? t('nav.courses') : ''}
         >
           <BookOpen size={18} />
-          <span>{t('nav.courses')}</span>
+          {!collapsed && <span>{t('nav.courses')}</span>}
         </Link>
         <Link 
           to="/languages" 
-          className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
+          className={`flex items-center ${collapsed ? 'justify-center' : 'gap-2'} px-3 py-2 rounded-lg text-sm transition-colors ${
             isActive('/languages') 
               ? 'bg-primary/10 text-primary font-semibold' 
               : 'hover:bg-gray-100 dark:hover:bg-white/5 text-gray-700 dark:text-white'
           }`}
+          title={collapsed ? t('nav.languages') : ''}
         >
           <LanguagesIcon size={18} />
-          <span>{t('nav.languages')}</span>
+          {!collapsed && <span>{t('nav.languages')}</span>}
         </Link>
         <Link 
           to="/community" 
-          className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
+          className={`flex items-center ${collapsed ? 'justify-center' : 'gap-2'} px-3 py-2 rounded-lg text-sm transition-colors ${
             isActive('/community') 
               ? 'bg-primary/10 text-primary font-semibold' 
               : 'hover:bg-gray-100 dark:hover:bg-white/5 text-gray-700 dark:text-white'
           }`}
+          title={collapsed ? t('dashboard.community') : ''}
         >
           <Users size={18} />
-          <span>{t('dashboard.community')}</span>
+          {!collapsed && <span>{t('dashboard.community')}</span>}
         </Link>
       </nav>
-
-      <div className="flex flex-col gap-2 mt-4">
-        {/* Language Selector */}
-        <div className="relative">
-          <button
-            onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-            className="w-full flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100 dark:bg-[#204b40] hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
-          >
-            <Globe size={18} />
-            <span className="text-sm font-semibold">{currentLang.flag} {currentLang.name}</span>
-          </button>
-
-          {isLangMenuOpen && (
-            <div className="absolute bottom-full left-0 mb-2 w-full bg-white dark:bg-[#17362d] rounded-lg shadow-lg border border-gray-200 dark:border-[#2e6b5b] overflow-hidden z-50">
-              {languages.map((lang) => (
-                <button
-                  key={lang.code}
-                  onClick={() => changeLanguage(lang.code)}
-                  className={`w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-[#204b40] transition-colors flex items-center gap-2 ${
-                    i18n.language === lang.code ? 'bg-gray-100 dark:bg-[#204b40]' : ''
-                  }`}
-                >
-                  <span>{lang.flag}</span>
-                  <span className="text-sm text-gray-900 dark:text-white">{lang.name}</span>
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* Theme Toggle */}
-        <button
-          onClick={toggleTheme}
-          className="w-full flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100 dark:bg-[#204b40] hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
-        >
-          {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
-          <span className="text-sm font-semibold">{theme === 'light' ? t('dashboard.darkMode') : t('dashboard.lightMode')}</span>
-        </button>
-      </div>
-
-      <div className="mt-auto">
-        <div className="flex items-center gap-3 p-3 rounded-lg bg-gray-100 dark:bg-[#204b40]/50">
-          <div className="w-12 h-12 rounded-full bg-center bg-cover" style={{backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuCxr6zJ9M6BzbtkdmIQDmVCcThOnNqeor15P0CIs7XkDIkzP5OAF-_Jwo4Ql4Ce5tEd-tHbCXmUy7hx_SeVwkN-tPnEFcCr7IbAopRAT3MvdHf2K0ZYrcD5q_nCy7ANFyOMooUwVk5o_u68_Q-TtxjZbS35DBxDVsqQ9NB-SllEZHpRd_UaqAjlIRU4_zRmAYkxjxoRUBtjVQfoAmEVft4yd4NRiHXIkJn4R8IDvx_v407JDOu9as0tnKpbHSWJ82Y32QLXfDXysus')`}}></div>
-          <div>
-            <p className="text-gray-900 dark:text-white text-sm font-semibold">Alex</p>
-            <p className="text-gray-600 dark:text-[#8dcebd] text-xs">{t('dashboard.student')}</p>
-          </div>
-        </div>
-      </div>
     </aside>
   );
 };

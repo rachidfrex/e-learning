@@ -160,6 +160,7 @@
     "community": "Communauté",
     "student": "Étudiant",
     "darkMode": "Mode Sombre",
-    "lightMode": "Mode Clair"
+    "lightMode": "Mode Clair",
+    "backToCourse": "Retour au Cours"
   }
 }
