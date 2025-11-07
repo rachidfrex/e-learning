@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Sun, Moon, Globe, ChevronDown, User, Settings, LogOut, Menu } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
+import { document } from 'postcss';
 
 const TopNavbar = ({ onMenuClick }) => {
   const { t, i18n } = useTranslation();
@@ -35,8 +36,7 @@ const TopNavbar = ({ onMenuClick }) => {
           <Menu size={24} className="text-gray-700 dark:text-white" />
         </button>
 
-        {/* Center: Logo or Title */}
-        <div className="flex-1 text-center lg:text-left lg:ml-4">
+        <div className={`flex-1 ${i18n.language === 'ar' ? 'text-right lg:text-right lg:mr-4' : 'text-center lg:text-left lg:ml-4'}`}>
           <h1 className="text-lg font-bold text-gray-900 dark:text-white">
             {t('hero.gendarmerie')}
           </h1>
