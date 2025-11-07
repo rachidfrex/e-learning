@@ -5,17 +5,20 @@ import TopNavbar from './TopNavbar';
 
 const DashboardLayout = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarCollapsed(!sidebarCollapsed);
+  };
 
   return (
     <div className="flex h-screen overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 dark:from-background-dark dark:to-[#0a1a15]">
       {/* Sidebar */}
-      <Sidebar collapsed={sidebarCollapsed} onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)} />
+      <Sidebar collapsed={sidebarCollapsed} />
       
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Top Navbar */}
-        <TopNavbar onMenuClick={() => setMobileSidebarOpen(!mobileSidebarOpen)} />
+        <TopNavbar onMenuClick={toggleSidebar} />
         
         {/* Page Content */}
         <div className="flex-1 overflow-auto">

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { LayoutDashboard, BookOpen, Languages as LanguagesIcon, Users, ChevronLeft, ChevronRight } from 'lucide-react';
+import { LayoutDashboard, BookOpen, Languages as LanguagesIcon, Users } from 'lucide-react';
 
-const Sidebar = ({ collapsed, onToggleCollapse }) => {
+const Sidebar = ({ collapsed }) => {
   const { t } = useTranslation();
   const location = useLocation();
 
@@ -58,15 +58,6 @@ const Sidebar = ({ collapsed, onToggleCollapse }) => {
         )}
       </div>
 
-      {/* Toggle Button */}
-      <button
-        onClick={onToggleCollapse}
-        className="absolute -right-3 top-20 bg-white dark:bg-[#204b40] border border-gray-200 dark:border-primary/20 rounded-full p-1.5 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors shadow-lg z-10"
-        title={collapsed ? 'Expand' : 'Collapse'}
-      >
-        {collapsed ? <ChevronRight size={16} className="text-gray-700 dark:text-white" /> : <ChevronLeft size={16} className="text-gray-700 dark:text-white" />}
-      </button>
-
       {/* Navigation */}
       <nav className="flex flex-col gap-1 mt-4">
         <Link 
@@ -78,7 +69,7 @@ const Sidebar = ({ collapsed, onToggleCollapse }) => {
           }`}
           title={collapsed ? t('dashboard.dashboard') : ''}
         >
-          <LayoutDashboard size={18} />
+          <LayoutDashboard size={18} className="flex-shrink-0" />
           {!collapsed && <span>{t('dashboard.dashboard')}</span>}
         </Link>
         <Link 
@@ -90,7 +81,7 @@ const Sidebar = ({ collapsed, onToggleCollapse }) => {
           }`}
           title={collapsed ? t('nav.courses') : ''}
         >
-          <BookOpen size={18} />
+          <BookOpen size={18} className="flex-shrink-0" />
           {!collapsed && <span>{t('nav.courses')}</span>}
         </Link>
         <Link 
@@ -102,7 +93,7 @@ const Sidebar = ({ collapsed, onToggleCollapse }) => {
           }`}
           title={collapsed ? t('nav.languages') : ''}
         >
-          <LanguagesIcon size={18} />
+          <LanguagesIcon size={18} className="flex-shrink-0" />
           {!collapsed && <span>{t('nav.languages')}</span>}
         </Link>
         <Link 
@@ -114,7 +105,7 @@ const Sidebar = ({ collapsed, onToggleCollapse }) => {
           }`}
           title={collapsed ? t('dashboard.community') : ''}
         >
-          <Users size={18} />
+          <Users size={18} className="flex-shrink-0" />
           {!collapsed && <span>{t('dashboard.community')}</span>}
         </Link>
       </nav>
