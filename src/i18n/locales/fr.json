@@ -35,10 +35,10 @@
     }
   },
   "courses": {
-    "title": "Explorez Nos Cours Populaires",
+    "title": "Découvrez Nos Cours Populaires",
     "viewCourse": "Voir le Cours",
     "digitalMarketing": "Masterclass en Marketing Digital",
-    "python": "Bootcamp Python Complet",
+    "militaryCorrespondence": "Fondamentaux de la Correspondance Militaire",
     "graphicDesign": "Fondamentaux du Design Graphique",
     "publicSpeaking": "L'Art de la Prise de Parole en Public",
     "militaryTraining": "Cours de Formation Militaire",
@@ -130,6 +130,8 @@
     "introductionToEnglish": "Introduction à l'Anglais",
     "startLesson": "Commencer la Leçon",
     "myCourses": "Mes Cours",
+    "viewAll": "Voir Tout",
+    "timeLeft": "min restantes",
     "dataScience": "Fondamentaux de la Science des Données",
     "uiuxDesign": "Masterclass UI/UX Design",
     "digitalMarketing": "Introduction au Marketing Digital",

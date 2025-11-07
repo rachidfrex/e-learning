@@ -77,7 +77,7 @@ const StudentDashboard = () => {
                       <div className="flex items-center gap-4 mt-2">
                         <div className="flex-1">
                           <div className="flex justify-between text-xs mb-1">
-                            <span className="text-gray-600 dark:text-[#8dcebd]">Progress</span>
+                            <span className="text-gray-600 dark:text-[#8dcebd]">{t('dashboard.progress')}</span>
                             <span className="text-primary font-bold">45%</span>
                           </div>
                           <div className="w-full bg-gray-200 dark:bg-[#2e6b5b]/50 rounded-full h-2">
@@ -86,14 +86,17 @@ const StudentDashboard = () => {
                         </div>
                         <div className="text-gray-600 dark:text-[#8dcebd] text-xs flex items-center gap-1">
                           <Clock className="w-3 h-3" />
-                          25 min left
+                          25 {t('dashboard.timeLeft')}
                         </div>
                       </div>
                     </div>
-                    <button className="inline-flex items-center gap-2 rounded-lg h-11 px-6 bg-gradient-to-r from-primary to-cyan-500 text-[#0f241e] text-sm font-bold hover:shadow-lg hover:shadow-primary/50 transition-all w-fit group">
+                    <Link 
+                      to="/courses/military-correspondence-fundamentals"
+                      className="inline-flex items-center gap-2 rounded-lg h-11 px-6 bg-gradient-to-r from-primary to-cyan-500 text-[#0f241e] text-sm font-bold hover:shadow-lg hover:shadow-primary/50 transition-all w-fit group"
+                    >
                       <PlayCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
                       <span>{t('dashboard.startLesson')}</span>
-                    </button>
+                    </Link>
                   </div>
                   <div className="relative w-full md:w-64 h-48 md:h-auto">
                     <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent rounded-lg"></div>
@@ -105,7 +108,7 @@ const StudentDashboard = () => {
               <section>
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="text-gray-900 dark:text-white text-2xl font-bold">{t('dashboard.myCourses')}</h2>
-                  <button className="text-primary text-sm font-semibold hover:underline">View All →</button>
+                  <button className="text-primary text-sm font-semibold hover:underline">{t('dashboard.viewAll')} →</button>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
                   {/* Course Card 1 - Enhanced */}

@@ -51,10 +51,10 @@ const LandingPage = () => {
       category: 'Marketing'
     },
     {
-      title: t('courses.python'),
-      instructor: 'Jose Portilla',
-      image: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=500&h=300&fit=crop',
-      category: 'Programming'
+      title: t('courses.militaryCorrespondence'),
+      instructor: 'العقيد أحمد المنصوري',
+      image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=500&h=300&fit=crop',
+      category: 'Military Training'
     },
     {
       title: t('courses.graphicDesign'),

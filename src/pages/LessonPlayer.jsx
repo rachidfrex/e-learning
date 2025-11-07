@@ -4,7 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import {
   ChevronLeft, ChevronRight, Settings, Maximize, Volume2, Play, Pause,
   FileText, Download, BookOpen, MessageCircle, CheckCircle, Lock,
-  List, X, Menu
+  List, X, Menu , PlayCircle, Clock
 } from 'lucide-react';
 import AIChat from '../components/AIChat';
 import ArticleLesson from '../components/ArticleLesson';
@@ -19,197 +19,166 @@ const LessonPlayer = () => {
   const [currentTime, setCurrentTime] = useState('0:00');
   const [duration, setDuration] = useState('15:30');
 
+  // Determine if this is military correspondence course based on the lessonId/route
+  const isMilitaryCourse = lessonId?.includes('military') || lessonId === 'military-correspondence-fundamentals' || !lessonId || lessonId === '1' || lessonId === '4' || lessonId === '5';
+
   // Mock lesson data - can be 'video' or 'article'
   const lesson = {
     id: 1,
     type: lessonId === '5' ? 'article' : 'video', // Demo: lesson 5 is an article, others are videos
-    title: lessonId === '5' ? 'Military Communication Protocols' : 'Introduction to Military Correspondence',
-    courseTitle: lessonId === '1' ? 'Introduction to English' : 'Military Correspondence Fundamentals',
-    courseSlug: lessonId === '1' ? 'introduction-to-english' : 'military-correspondence-fundamentals',
-    moduleTitle: lessonId === '1' ? 'Basic English Communication' : 'Official Documentation',
-    videoUrl: 'https://www.youtube.com/embed/rfscVS0vtbw',
+    title: lessonId === '5' ? 'بروتوكولات الاتصال العسكري' : 'مقدمة في المراسلات العسكرية',
+    courseTitle: 'أساسيات المراسلات العسكرية',
+    courseSlug: 'military-correspondence-fundamentals',
+    moduleTitle: 'الوحدة 1: الوثائق الرسمية',
+    videoUrl: '', // Empty video URL - we'll show a placeholder
     duration: '15:30',
     readTime: '10 min',
     wordCount: '2,500',
-    featuredImage: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&h=600&fit=crop',
-    description: lessonId === '1' 
-      ? 'Learn essential English communication skills for military personnel' 
-      : 'Learn the fundamentals of military correspondence, protocols, and official documentation.',
+    featuredImage: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=600&fit=crop',
+    description: 'تعلم أساسيات المراسلات العسكرية والبروتوكولات والوثائق الرسمية',
     completed: false,
     content: lessonId === '5' ? `
-      <h2>Military Communication Protocols</h2>
-      <p>Effective communication is essential in military operations. This lesson covers the key protocols and procedures for military communications.</p>
+      <h2>بروتوكولات الاتصال العسكري</h2>
+      <p>الاتصال الفعال أمر ضروري في العمليات العسكرية. يغطي هذا الدرس البروتوكولات والإجراءات الرئيسية للاتصالات العسكرية.</p>
       
-      <h3>1. Radio Communication Standards</h3>
-      <p>Military radio communication follows strict protocols:</p>
+      <h3>1. معايير الاتصال اللاسلكي</h3>
+      <p>يتبع الاتصال اللاسلكي العسكري بروتوكولات صارمة:</p>
       <ul>
-        <li><strong>Brevity Codes</strong> - Short, standardized phrases for quick communication</li>
-        <li><strong>Phonetic Alphabet</strong> - NATO phonetic alphabet for clarity (Alpha, Bravo, Charlie...)</li>
-        <li><strong>Call Signs</strong> - Unique identifiers for units and personnel</li>
+        <li><strong>رموز الاختصار</strong> - عبارات قصيرة موحدة للتواصل السريع</li>
+        <li><strong>الأبجدية الصوتية</strong> - أبجدية الناتو الصوتية للوضوح (Alpha, Bravo, Charlie...)</li>
+        <li><strong>النداءات</strong> - معرفات فريدة للوحدات والأفراد</li>
       </ul>
 
       <div class="bg-gray-900 text-gray-100 rounded-lg p-4 my-4">
-        <pre><code># Radio Communication Example
+        <pre><code># مثال على الاتصال اللاسلكي
 
-Sender: "Alpha One to Bravo Two, over"
-Receiver: "Bravo Two, go ahead, over"
-Sender: "Request status report, over"
-Receiver: "Status green, mission complete, over"
-Sender: "Roger that, return to base, out"</code></pre>
+المرسل: "ألفا واحد إلى برافو اثنين، استقبال"
+المستقبل: "برافو اثنين، تفضل، استقبال"
+المرسل: "طلب تقرير الحالة، استقبال"
+المستقبل: "الحالة خضراء، المهمة مكتملة، استقبال"
+المرسل: "تم الاستلام، العودة إلى القاعدة، انتهى"</code></pre>
       </div>
 
-      <h3>2. Written Communication Standards</h3>
-      <p>Military written correspondence must be clear, concise, and formal:</p>
+      <h3>2. معايير الكتابة الرسمية</h3>
+      <p>يجب أن تكون المراسلات العسكرية المكتوبة واضحة وموجزة ورسمية:</p>
 
       <div class="bg-gray-900 text-gray-100 rounded-lg p-4 my-4">
-        <pre><code>OFFICIAL MEMORANDUM
+        <pre><code>مذكرة رسمية
 
-FROM: Commander, Unit Alpha
-TO: All Personnel
-DATE: [Current Date]
-SUBJECT: Communication Protocol Update
+من: القائد، الوحدة ألفا
+إلى: جميع الأفراد
+التاريخ: [التاريخ الحالي]
+الموضوع: تحديث بروتوكول الاتصال
 
-1. All radio communications will use NATO phonetic alphabet
-2. Daily status reports required by 1800 hours
-3. Emergency channels to remain clear except for urgent traffic
+1. جميع الاتصالات اللاسلكية ستستخدم الأبجدية الصوتية للناتو
+2. تقارير الحالة اليومية مطلوبة بحلول الساعة 1800
+3. قنوات الطوارئ يجب أن تبقى خالية إلا للاتصالات العاجلة
 
-[Commander's Signature]</code></pre>
+[توقيع القائد]</code></pre>
       </div>
 
-      <h3>3. Chain of Command Communication</h3>
-      <p>Follow proper chain of command when communicating:</p>
+      <h3>3. سلسلة القيادة في الاتصالات</h3>
+      <p>اتبع سلسلة القيادة المناسبة عند التواصل:</p>
 
       <div class="bg-gray-900 text-gray-100 rounded-lg p-4 my-4">
-        <pre><code>Communication Flow:
+        <pre><code>تدفق الاتصالات:
 
-Commander
+القائد
     ↓
-Executive Officer
+الضابط التنفيذي
     ↓
-Operations Officer
+ضابط العمليات
     ↓
-Unit Leaders
+قادة الوحدات
     ↓
-Personnel
+الأفراد
 
-Note: Emergency situations may bypass normal channels</code></pre>
+ملاحظة: حالات الطوارئ قد تتجاوز القنوات العادية</code></pre>
       </div>
 
-      <h3>4. Security Classifications</h3>
-      <p>All military communications must be properly classified:</p>
+      <h3>4. التصنيفات الأمنية</h3>
+      <p>يجب تصنيف جميع الاتصالات العسكرية بشكل صحيح:</p>
       <ul>
-        <li><strong>UNCLASSIFIED</strong> - Public information</li>
-        <li><strong>CONFIDENTIAL</strong> - Limited distribution</li>
-        <li><strong>SECRET</strong> - Serious damage if disclosed</li>
-        <li><strong>TOP SECRET</strong> - Grave damage if disclosed</li>
+        <li><strong>غير سري</strong> - معلومات عامة</li>
+        <li><strong>سري</strong> - توزيع محدود</li>
+        <li><strong>سري للغاية</strong> - ضرر جسيم في حالة الكشف</li>
+        <li><strong>سري للغاية جداً</strong> - ضرر خطير في حالة الكشف</li>
+      </ul>
+
+      <h3>ملخص أفضل الممارسات</h3>
+      <p>تذكر هذه المبادئ الرئيسية للاتصالات العسكرية:</p>
+      <ul>
+        <li>كن واضحاً وموجزاً</li>
+        <li>اتبع البروتوكولات المناسبة وسلسلة القيادة</li>
+        <li>حافظ على الأمن في جميع الأوقات</li>
+        <li>وثق جميع الاتصالات الهامة</li>
+        <li>مارس الأمن التشغيلي (OPSEC)</li>
       </ul>
 
       <div class="bg-gray-900 text-gray-100 rounded-lg p-4 my-4">
-        <pre><code>Classification Markings:
-
-[CLASSIFICATION LEVEL]
-Document Title
-Date: [Current Date]
-
-Content goes here...
-
-[CLASSIFICATION LEVEL]</code></pre>
-      </div>
-
-      <h3>5. Digital Communication Security</h3>
-      <p>Modern military communications require cybersecurity awareness:</p>
-      <ul>
-        <li>Use encrypted channels for sensitive information</li>
-        <li>Never share passwords or access codes over unsecured networks</li>
-        <li>Report suspicious communications immediately</li>
-        <li>Follow proper authentication procedures</li>
-      </ul>
-
-      <div class="bg-gray-900 text-gray-100 rounded-lg p-4 my-4">
-        <pre><code>Security Checklist:
-
-☑ Verify recipient identity
-☑ Check classification level
-☑ Use secure transmission method
-☑ Confirm receipt
-☑ Destroy sensitive materials properly</code></pre>
-      </div>
-
-      <h3>Best Practices Summary</h3>
-      <p>Remember these key principles for military communications:</p>
-      <ul>
-        <li>Be clear and concise</li>
-        <li>Follow proper protocols and chain of command</li>
-        <li>Maintain security at all times</li>
-        <li>Document all important communications</li>
-        <li>Practice operational security (OPSEC)</li>
-      </ul>
-
-      <div class="bg-gray-900 text-gray-100 rounded-lg p-4 my-4">
-        <pre><code>REMEMBER:
-- Clear Communication Saves Lives
-- Security Is Everyone's Responsibility
-- When In Doubt, Ask For Clarification
-- Document Everything Important</code></pre>
+        <pre><code>تذكر:
+- الاتصال الواضح ينقذ الأرواح
+- الأمن مسؤولية الجميع
+- عند الشك، اطلب التوضيح
+- وثق كل شيء مهم</code></pre>
       </div>
     ` : null,
     transcript: [
-      { time: '0:00', text: 'Welcome to this lesson on military correspondence. In this video, we\'ll cover the fundamentals of official military documentation.' },
-      { time: '0:15', text: 'Military correspondence follows strict protocols and formats. Understanding these standards is essential for effective communication.' },
-      { time: '0:35', text: 'We\'ll begin with the basic structure of a military memorandum and official letters.' },
-      { time: '0:50', text: 'Every military document must include proper headers: FROM, TO, DATE, and SUBJECT lines.' },
-      { time: '1:10', text: 'The language used must be clear, concise, and professional at all times.' },
-      { time: '1:30', text: 'For example, when writing a status report, always use present tense and active voice.' },
-      { time: '1:50', text: 'Classification markings are critical. All documents must be properly marked according to their security level.' },
-      { time: '2:10', text: 'Let\'s discuss the proper chain of command for routing correspondence.' },
-      { time: '2:30', text: 'Documents must follow the established hierarchy and receive appropriate approvals.' },
-      { time: '2:50', text: 'Here are key principles: accuracy, brevity, clarity, and proper format are essential for military correspondence.' }
+      { time: '0:00', text: 'مرحباً بكم في هذا الدرس حول المراسلات العسكرية. سنغطي أساسيات التوثيق العسكري الرسمي.' },
+      { time: '0:15', text: 'تتبع المراسلات العسكرية بروتوكولات وصيغ صارمة. فهم هذه المعايير ضروري للتواصل الفعال.' },
+      { time: '0:35', text: 'سنبدأ بالهيكل الأساسي للمذكرة العسكرية والرسائل الرسمية.' },
+      { time: '0:50', text: 'يجب أن تتضمن كل وثيقة عسكرية رؤوس مناسبة: من، إلى، التاريخ، وسطور الموضوع.' },
+      { time: '1:10', text: 'يجب أن تكون اللغة المستخدمة واضحة وموجزة ومهنية في جميع الأوقات.' },
+      { time: '1:30', text: 'على سبيل المثال، عند كتابة تقرير الحالة، استخدم دائماً زمن المضارع والصوت النشط.' },
+      { time: '1:50', text: 'علامات التصنيف مهمة. يجب وضع علامات على جميع الوثائق بشكل صحيح وفقاً لمستوى أمانها.' },
+      { time: '2:10', text: 'دعنا نناقش سلسلة القيادة المناسبة لتوجيه المراسلات.' },
+      { time: '2:30', text: 'يجب أن تتبع الوثائق التسلسل الهرمي المعمول به وتحصل على الموافقات المناسبة.' },
+      { time: '2:50', text: 'إليك المبادئ الرئيسية: الدقة والإيجاز والوضوح والشكل المناسب ضرورية للمراسلات العسكرية.' }
     ],
     resources: [
-      { id: 1, name: 'Military Correspondence Guide.pdf', size: '3.2 MB', type: 'pdf' },
-      { id: 2, name: 'Official Letter Templates.zip', size: '245 KB', type: 'zip' },
-      { id: 3, name: 'Communication Protocol Manual.pdf', size: '4.1 MB', type: 'pdf' }
+      { id: 1, name: 'دليل المراسلات العسكرية.pdf', size: '3.2 MB', type: 'pdf' },
+      { id: 2, name: 'نماذج الرسائل الرسمية.zip', size: '245 KB', type: 'zip' },
+      { id: 3, name: 'دليل بروتوكول الاتصال.pdf', size: '4.1 MB', type: 'pdf' }
     ],
     nextLesson: {
       id: 2,
-      title: 'Official Report Writing',
+      title: 'كتابة التقارير الرسمية',
       locked: false
     },
     previousLesson: {
       id: 0,
-      title: 'Course Introduction',
+      title: 'مقدمة الدورة',
       locked: false
     }
   };
 
-  // Mock curriculum for sidebar
+  // Mock curriculum for sidebar - 3 lessons for demo
   const curriculum = [
     {
       id: 1,
-      title: lessonId === '1' ? 'English Fundamentals' : 'Course Introduction',
+      title: 'مقدمة الدورة',
       lessons: [
-        { id: 1, title: lessonId === '1' ? 'English Basics' : 'Welcome to Military Correspondence', duration: '5:30', type: 'video', completed: true },
-        { id: 2, title: lessonId === '1' ? 'English Grammar Introduction' : 'Understanding Military Documentation', duration: '8:45', type: 'video', completed: true },
-        { id: 3, title: lessonId === '1' ? 'Basic English Vocabulary' : 'Your First Official Letter', duration: '6:20', type: 'video', completed: true }
+        { id: 1, title: 'مرحباً بك في المراسلات العسكرية', duration: '5:30', type: 'video', completed: true },
+        { id: 2, title: 'فهم التوثيق العسكري', duration: '8:45', type: 'video', completed: true },
+        { id: 3, title: 'رسالتك الرسمية الأولى', duration: '6:20', type: 'video', completed: true }
       ]
     },
     {
       id: 2,
-      title: lessonId === '1' ? 'English Communication' : 'Official Documentation',
+      title: 'الوثائق الرسمية',
       lessons: [
-        { id: 4, title: lessonId === '1' ? 'English Conversation Practice' : 'Introduction to Military Correspondence', duration: '15:30', type: 'video', completed: false, current: true },
-        { id: 5, title: lessonId === '1' ? 'English Writing Skills' : 'Military Communication Protocols', duration: '10 min read', type: 'article', completed: false, locked: false },
-        { id: 6, title: lessonId === '1' ? 'English Pronunciation' : 'Report Writing Standards', duration: '18:30', type: 'video', completed: false, locked: false },
-        { id: 7, title: lessonId === '1' ? 'English Listening Comprehension' : 'Memorandum Formats', duration: '10:45', type: 'video', completed: false, locked: false }
+        { id: 4, title: 'مقدمة في المراسلات العسكرية', duration: '15:30', type: 'video', completed: false, current: true },
+        { id: 5, title: 'بروتوكولات الاتصال العسكري', duration: '10 min read', type: 'article', completed: false, locked: false },
+        { id: 6, title: 'معايير كتابة التقارير', duration: '18:30', type: 'video', completed: false, locked: false }
       ]
     },
     {
       id: 3,
-      title: lessonId === '1' ? 'Advanced English' : 'Communication Procedures',
+      title: 'إجراءات الاتصال',
       lessons: [
-        { id: 8, title: lessonId === '1' ? 'Advanced Grammar' : 'Radio Communication Procedures', duration: '14:20', completed: false, locked: false },
-        { id: 9, title: lessonId === '1' ? 'Business English' : 'Chain of Command Protocol', duration: '16:30', completed: false, locked: false },
-        { id: 10, title: lessonId === '1' ? 'English for Presentations' : 'Security Classifications', duration: '12:10', completed: false, locked: false }
+        { id: 7, title: 'إجراءات الاتصال اللاسلكي', duration: '14:20', completed: false, locked: false },
+        { id: 8, title: 'بروتوكول سلسلة القيادة', duration: '16:30', completed: false, locked: false },
+        { id: 9, title: 'التصنيفات الأمنية', duration: '12:10', completed: false, locked: false }
       ]
     }
   ];
@@ -318,20 +287,30 @@ Content goes here...
             <ArticleLesson lesson={lesson} />
           ) : (
             <>
-              {/* Video Player */}
-              <div className="relative bg-black aspect-video">
-                {/* Video embed - in production, use proper video player */}
-                <iframe
-                  className="w-full h-full"
-                  src={lesson.videoUrl}
-                  title={lesson.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
+              {/* Video Player Placeholder */}
+              <div className="relative bg-gradient-to-br from-[#17362d] to-[#0f231e] aspect-video flex items-center justify-center">
+                <div className="text-center p-8">
+                  <div className="w-24 h-24 mx-auto mb-6 bg-primary/20 rounded-full flex items-center justify-center">
+                    <PlayCircle size={48} className="text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-3">
+                    {lesson.title}
+                  </h3>
+                  <p className="text-white/60 mb-6 max-w-md mx-auto">
+                    محتوى الفيديو سيتم إضافته قريباً. هذا عرض توضيحي للبنية الأساسية.
+                  </p>
+                  <div className="flex items-center justify-center gap-4 text-sm text-white/50">
+                    <span className="flex items-center gap-2">
+                      <Clock size={16} />
+                      {lesson.duration}
+                    </span>
+                    <span>•</span>
+                    <span>{lesson.moduleTitle}</span>
+                  </div>
+                </div>
 
                 {/* Custom Controls Overlay (optional) */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 hover:opacity-100 transition-opacity">
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                   <div className="flex items-center gap-4">
                     <button className="p-2 hover:bg-white/20 rounded-full transition-colors">
                       {isPlaying ? <Pause size={24} /> : <Play size={24} />}

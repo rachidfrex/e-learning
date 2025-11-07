@@ -16,6 +16,13 @@ const SignInPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
+    if (formData.email && formData.password) {
+      // go to dashboard
+      setTimeout(() => {
+        window.location.href = '/dashboard';
+      }, 3000);
+      
+    }
   };
 
   return (
@@ -177,6 +184,7 @@ const SignInPage = () => {
 
               {/* Submit Button */}
               <button
+              
                 type="submit"
                 className="flex items-center justify-center gap-2 rounded-lg h-12 px-5 bg-primary text-[#0f241e] text-base font-bold hover:bg-primary/90 transition-all group"
               >

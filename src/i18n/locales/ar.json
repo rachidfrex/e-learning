@@ -35,13 +35,13 @@
     }
   },
   "courses": {
-    "title": "استكشف دوراتنا الشعبية",
+    "title": "استكشف دوراتنا الشهيرة",
     "viewCourse": "عرض الدورة",
-    "digitalMarketing": "ماستركلاس التسويق الرقمي",
-    "python": "بوتكامب بايثون الكامل",
+    "digitalMarketing": "ماجستير التسويق الرقمي",
+    "militaryCorrespondence": "أساسيات المراسلات العسكرية",
     "graphicDesign": "أساسيات التصميم الجرافيكي",
     "publicSpeaking": "فن الخطابة العامة",
-    "militaryTraining": "الدورات التدريبية العسكرية",
+    "militaryTraining": "دورات التدريب العسكري",
     "discoverCourses": "اكتشف {{count}} دورة عسكرية متخصصة"
   },
   "categories": {
@@ -130,6 +130,8 @@
     "introductionToEnglish": "مقدمة في اللغة الإنجليزية",
     "startLesson": "بدء الدرس",
     "myCourses": "دوراتي",
+    "viewAll": "عرض الكل",
+    "timeLeft": "دقيقة متبقية",
     "dataScience": "أساسيات علم البيانات",
     "uiuxDesign": "ماستركلاس تصميم UI/UX",
     "digitalMarketing": "مقدمة في التسويق الرقمي",

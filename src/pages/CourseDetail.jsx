@@ -15,101 +15,101 @@ const CourseDetail = () => {
   // Mock course data (in real app, fetch from API)
   const course = {
     id: 1,
-    slug: 'python-complete-bootcamp',
-    title: 'Complete Python Bootcamp: Go from zero to hero in Python 3',
-    subtitle: 'Learn Python like a Professional! Start from the basics and go all the way to creating your own applications and games!',
+    slug: 'military-correspondence-fundamentals',
+    title: 'أساسيات المراسلات العسكرية',
+    subtitle: 'تعلم أساسيات الكتابة العسكرية الرسمية والمراسلات الإدارية وفقاً للمعايير المعتمدة',
     instructor: {
-      name: 'Jose Portilla',
-      title: 'Head of Data Science, Pierian Data Inc.',
+      name: 'العقيد أحمد المنصوري',
+      title: 'مدير التدريب والتطوير، الأكاديمية العسكرية',
       avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop',
-      rating: 4.7,
-      students: 1250000,
-      courses: 38
+      rating: 4.9,
+      students: 15000,
+      courses: 12
     },
-    image: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=1200&h=600&fit=crop',
-    rating: 4.7,
-    reviews: 125000,
-    students: 450000,
-    duration: '22h',
-    lessons: 156,
+    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=600&fit=crop',
+    rating: 4.9,
+    reviews: 3500,
+    students: 15000,
+    duration: '18h',
+    lessons: 42,
     level: 'Beginner',
-    language: 'English',
+    language: 'Arabic',
     lastUpdated: 'November 2024',
     price: 'Free',
-    description: `This course will take you from a complete beginner to an advanced Python programmer. You'll learn Python programming from scratch with hands-on projects and real-world examples.
+    description: `هذه الدورة التدريبية الشاملة تغطي جميع جوانب المراسلات العسكرية الرسمية. ستتعلم كيفية كتابة المذكرات الرسمية، التقارير، والخطابات الإدارية وفقاً للمعايير المعتمدة في القوات المسلحة.
 
-We'll cover everything from Python basics to advanced topics like object-oriented programming, file I/O, error handling, and working with databases. You'll also build multiple projects including games, automation scripts, and web applications.`,
+سنغطي كل شيء من الأساسيات إلى المواضيع المتقدمة مثل التصنيفات الأمنية، البروتوكولات الرسمية، وإجراءات التوثيق. ستتدرب على كتابة مستندات عسكرية حقيقية وفهم سلسلة القيادة في المراسلات.`,
     
     whatYouLearn: [
-      'Learn to use Python professionally, learning both Python 2 and Python 3!',
-      'Create games with Python, like Tic Tac Toe and Blackjack!',
-      'Learn advanced Python features, like the collections module and how to work with timestamps!',
-      'Learn to use Object Oriented Programming with classes!',
-      'Understand complex topics, like decorators.',
-      'Understand how to use both the Jupyter Notebook and create .py files',
-      'Get an understanding of how to create GUIs in the Jupyter Notebook system!',
-      'Build a complete understanding of Python from the ground up!'
+      'إتقان أساسيات الكتابة العسكرية الرسمية',
+      'كتابة المذكرات والتقارير العسكرية بشكل احترافي',
+      'فهم البروتوكولات الرسمية في المراسلات',
+      'التعامل مع التصنيفات الأمنية للوثائق',
+      'معرفة إجراءات سلسلة القيادة في المراسلات',
+      'كتابة الخطابات الإدارية الرسمية',
+      'فهم معايير الاتصال العسكري',
+      'تطبيق معايير التوثيق والأرشفة العسكرية'
     ],
 
     requirements: [
-      'Access to a computer with an internet connection.',
-      'No prior programming experience needed!',
-      'Just enthusiasm to learn Python!'
+      'إجادة القراءة والكتابة باللغة العربية',
+      'لا يشترط خبرة سابقة في المراسلات العسكرية',
+      'الرغبة في تعلم أساسيات الكتابة الرسمية'
     ],
 
     curriculum: [
       {
         id: 1,
-        title: 'Course Introduction',
+        title: 'مقدمة الدورة',
         lessons: 5,
         duration: '25min',
         items: [
-          { id: 1, title: 'Introduction to the Course', type: 'video', duration: '5:30', preview: true },
-          { id: 2, title: 'Course Curriculum Overview', type: 'video', duration: '4:15', preview: true },
-          { id: 3, title: 'Setting Up Python', type: 'video', duration: '8:45', preview: false },
-          { id: 4, title: 'Running Python Code', type: 'video', duration: '6:20', preview: false },
-          { id: 5, title: 'Getting the Course Notebooks', type: 'article', duration: '2min', preview: false }
+          { id: 1, title: 'مقدمة عن المراسلات العسكرية', type: 'video', duration: '5:30', preview: true },
+          { id: 2, title: 'نظرة عامة على منهج الدورة', type: 'video', duration: '4:15', preview: true },
+          { id: 3, title: 'المعايير الأساسية للكتابة الرسمية', type: 'video', duration: '8:45', preview: false },
+          { id: 4, title: 'أنواع الوثائق العسكرية', type: 'video', duration: '6:20', preview: false },
+          { id: 5, title: 'تحميل نماذج المراسلات', type: 'article', duration: '2min', preview: false }
         ]
       },
       {
         id: 2,
-        title: 'Python Basics',
+        title: 'أساسيات المراسلات',
         lessons: 18,
         duration: '2h 30min',
         items: [
-          { id: 6, title: 'Python Object and Data Structure Basics', type: 'video', duration: '12:30', preview: false },
-          { id: 7, title: 'Numbers in Python', type: 'video', duration: '10:15', preview: false },
-          { id: 8, title: 'Variable Assignments', type: 'video', duration: '8:45', preview: false },
-          { id: 9, title: 'Strings', type: 'video', duration: '15:20', preview: false },
-          { id: 10, title: 'Print Formatting', type: 'video', duration: '12:10', preview: false },
-          { id: 11, title: 'Lists in Python', type: 'video', duration: '18:30', preview: false },
-          { id: 12, title: 'Dictionaries', type: 'video', duration: '14:25', preview: false },
-          { id: 13, title: 'Quiz: Python Basics', type: 'quiz', duration: '15min', preview: false }
+          { id: 6, title: 'هيكل المذكرة الرسمية', type: 'video', duration: '12:30', preview: false },
+          { id: 7, title: 'كتابة العنوان والمقدمة', type: 'video', duration: '10:15', preview: false },
+          { id: 8, title: 'صياغة الموضوع الرئيسي', type: 'video', duration: '8:45', preview: false },
+          { id: 9, title: 'الخاتمة والتوقيع', type: 'video', duration: '15:20', preview: false },
+          { id: 10, title: 'التنسيق والإخراج', type: 'video', duration: '12:10', preview: false },
+          { id: 11, title: 'المصطلحات العسكرية الشائعة', type: 'video', duration: '18:30', preview: false },
+          { id: 12, title: 'أمثلة عملية', type: 'video', duration: '14:25', preview: false },
+          { id: 13, title: 'اختبار: الأساسيات', type: 'quiz', duration: '15min', preview: false }
         ]
       },
       {
         id: 3,
-        title: 'Python Statements',
+        title: 'التصنيفات الأمنية',
         lessons: 12,
         duration: '1h 45min',
         items: [
-          { id: 14, title: 'Introduction to Python Statements', type: 'video', duration: '8:30', preview: false },
-          { id: 15, title: 'If, Elif, and Else Statements', type: 'video', duration: '12:15', preview: false },
-          { id: 16, title: 'For Loops', type: 'video', duration: '15:45', preview: false },
-          { id: 17, title: 'While Loops', type: 'video', duration: '10:20', preview: false },
-          { id: 18, title: 'Quiz: Python Statements', type: 'quiz', duration: '20min', preview: false }
+          { id: 14, title: 'مقدمة عن التصنيفات الأمنية', type: 'video', duration: '8:30', preview: false },
+          { id: 15, title: 'المستويات الأمنية للوثائق', type: 'video', duration: '12:15', preview: false },
+          { id: 16, title: 'إجراءات التعامل مع الوثائق السرية', type: 'video', duration: '15:45', preview: false },
+          { id: 17, title: 'الأرشفة والحفظ الآمن', type: 'video', duration: '10:20', preview: false },
+          { id: 18, title: 'اختبار: التصنيفات الأمنية', type: 'quiz', duration: '20min', preview: false }
         ]
       },
       {
         id: 4,
-        title: 'Methods and Functions',
+        title: 'سلسلة القيادة والبروتوكولات',
         lessons: 15,
         duration: '2h 15min',
         items: [
-          { id: 19, title: 'Introduction to Functions', type: 'video', duration: '10:30', preview: false },
-          { id: 20, title: 'def keyword', type: 'video', duration: '8:15', preview: false },
-          { id: 21, title: 'Basics of Python Functions', type: 'video', duration: '12:45', preview: false },
-          { id: 22, title: 'Logic with Python Functions', type: 'video', duration: '15:20', preview: false }
+          { id: 19, title: 'مقدمة عن البروتوكولات', type: 'video', duration: '10:30', preview: false },
+          { id: 20, title: 'التسلسل الإداري', type: 'video', duration: '8:15', preview: false },
+          { id: 21, title: 'إجراءات الاتصال الرسمي', type: 'video', duration: '12:45', preview: false },
+          { id: 22, title: 'التطبيقات العملية', type: 'video', duration: '15:20', preview: false }
         ]
       }
     ]
@@ -198,7 +198,7 @@ We'll cover everything from Python basics to advanced topics like object-oriente
                     {course.price}
                   </div>
                   <Link
-                    to={`/learn/${course.slug}`}
+                    to="/learn/military-correspondence-fundamentals"
                     className="flex items-center justify-center gap-2 w-full bg-primary hover:bg-primary/90 text-[#0f241e] font-bold py-3 px-6 rounded-lg transition-colors mb-3"
                   >
                     <PlayCircle size={20} />
