@@ -23,138 +23,156 @@ const LessonPlayer = () => {
   const lesson = {
     id: 1,
     type: lessonId === '5' ? 'article' : 'video', // Demo: lesson 5 is an article, others are videos
-    title: lessonId === '5' ? 'Understanding Python Data Types' : 'Introduction to Python Variables',
-    courseTitle: 'Complete Python Bootcamp',
-    courseSlug: 'python-complete-bootcamp',
-    moduleTitle: 'Python Basics',
+    title: lessonId === '5' ? 'Military Communication Protocols' : 'Introduction to Military Correspondence',
+    courseTitle: lessonId === '1' ? 'Introduction to English' : 'Military Correspondence Fundamentals',
+    courseSlug: lessonId === '1' ? 'introduction-to-english' : 'military-correspondence-fundamentals',
+    moduleTitle: lessonId === '1' ? 'Basic English Communication' : 'Official Documentation',
     videoUrl: 'https://www.youtube.com/embed/rfscVS0vtbw',
     duration: '15:30',
     readTime: '10 min',
     wordCount: '2,500',
     featuredImage: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&h=600&fit=crop',
-    description: 'Learn the fundamentals of Python variables, how to declare them, and best practices for naming conventions.',
+    description: lessonId === '1' 
+      ? 'Learn essential English communication skills for military personnel' 
+      : 'Learn the fundamentals of military correspondence, protocols, and official documentation.',
     completed: false,
     content: lessonId === '5' ? `
-      <h2>Understanding Python Data Types</h2>
-      <p>Python has several built-in data types that are essential for programming. In this lesson, we'll explore the most commonly used types.</p>
+      <h2>Military Communication Protocols</h2>
+      <p>Effective communication is essential in military operations. This lesson covers the key protocols and procedures for military communications.</p>
       
-      <h3>1. Numeric Types</h3>
-      <p>Python supports three numeric types:</p>
+      <h3>1. Radio Communication Standards</h3>
+      <p>Military radio communication follows strict protocols:</p>
       <ul>
-        <li><strong>int</strong> - Integer numbers (e.g., 5, -3, 1000)</li>
-        <li><strong>float</strong> - Floating point numbers (e.g., 3.14, -0.5, 2.0)</li>
-        <li><strong>complex</strong> - Complex numbers (e.g., 3+5j)</li>
+        <li><strong>Brevity Codes</strong> - Short, standardized phrases for quick communication</li>
+        <li><strong>Phonetic Alphabet</strong> - NATO phonetic alphabet for clarity (Alpha, Bravo, Charlie...)</li>
+        <li><strong>Call Signs</strong> - Unique identifiers for units and personnel</li>
       </ul>
 
       <div class="bg-gray-900 text-gray-100 rounded-lg p-4 my-4">
-        <pre><code># Examples of numeric types
-x = 5          # int
-y = 3.14       # float
-z = 1 + 2j     # complex
+        <pre><code># Radio Communication Example
 
-print(type(x))  # Output: <class 'int'>
-print(type(y))  # Output: <class 'float'>
-print(type(z))  # Output: <class 'complex'></code></pre>
+Sender: "Alpha One to Bravo Two, over"
+Receiver: "Bravo Two, go ahead, over"
+Sender: "Request status report, over"
+Receiver: "Status green, mission complete, over"
+Sender: "Roger that, return to base, out"</code></pre>
       </div>
 
-      <h3>2. String Type</h3>
-      <p>Strings are sequences of characters enclosed in quotes. You can use single, double, or triple quotes.</p>
+      <h3>2. Written Communication Standards</h3>
+      <p>Military written correspondence must be clear, concise, and formal:</p>
 
       <div class="bg-gray-900 text-gray-100 rounded-lg p-4 my-4">
-        <pre><code># String examples
-name = "Alice"
-message = 'Hello, World!'
-multiline = """This is a
-multiline
-string"""
+        <pre><code>OFFICIAL MEMORANDUM
 
-print(name)      # Output: Alice
-print(len(name)) # Output: 5</code></pre>
+FROM: Commander, Unit Alpha
+TO: All Personnel
+DATE: [Current Date]
+SUBJECT: Communication Protocol Update
+
+1. All radio communications will use NATO phonetic alphabet
+2. Daily status reports required by 1800 hours
+3. Emergency channels to remain clear except for urgent traffic
+
+[Commander's Signature]</code></pre>
       </div>
 
-      <h3>3. Boolean Type</h3>
-      <p>Boolean values represent True or False. They are often used in conditional statements.</p>
+      <h3>3. Chain of Command Communication</h3>
+      <p>Follow proper chain of command when communicating:</p>
 
       <div class="bg-gray-900 text-gray-100 rounded-lg p-4 my-4">
-        <pre><code># Boolean examples
-is_student = True
-has_graduated = False
+        <pre><code>Communication Flow:
 
-print(5 > 3)     # Output: True
-print(10 == 5)   # Output: False</code></pre>
+Commander
+    ↓
+Executive Officer
+    ↓
+Operations Officer
+    ↓
+Unit Leaders
+    ↓
+Personnel
+
+Note: Emergency situations may bypass normal channels</code></pre>
       </div>
 
-      <h3>4. Collection Types</h3>
-      <p>Python provides several collection types for storing multiple values:</p>
+      <h3>4. Security Classifications</h3>
+      <p>All military communications must be properly classified:</p>
       <ul>
-        <li><strong>List</strong> - Ordered, mutable collection</li>
-        <li><strong>Tuple</strong> - Ordered, immutable collection</li>
-        <li><strong>Set</strong> - Unordered collection of unique elements</li>
-        <li><strong>Dictionary</strong> - Key-value pairs</li>
+        <li><strong>UNCLASSIFIED</strong> - Public information</li>
+        <li><strong>CONFIDENTIAL</strong> - Limited distribution</li>
+        <li><strong>SECRET</strong> - Serious damage if disclosed</li>
+        <li><strong>TOP SECRET</strong> - Grave damage if disclosed</li>
       </ul>
 
       <div class="bg-gray-900 text-gray-100 rounded-lg p-4 my-4">
-        <pre><code># Collection examples
-my_list = [1, 2, 3, 4, 5]
-my_tuple = (1, 2, 3)
-my_set = {1, 2, 3, 4, 5}
-my_dict = {"name": "Alice", "age": 25}
+        <pre><code>Classification Markings:
 
-print(my_list[0])   # Output: 1
-print(my_dict["name"]) # Output: Alice</code></pre>
+[CLASSIFICATION LEVEL]
+Document Title
+Date: [Current Date]
+
+Content goes here...
+
+[CLASSIFICATION LEVEL]</code></pre>
       </div>
 
-      <h3>Type Conversion</h3>
-      <p>You can convert between different data types using built-in functions:</p>
+      <h3>5. Digital Communication Security</h3>
+      <p>Modern military communications require cybersecurity awareness:</p>
+      <ul>
+        <li>Use encrypted channels for sensitive information</li>
+        <li>Never share passwords or access codes over unsecured networks</li>
+        <li>Report suspicious communications immediately</li>
+        <li>Follow proper authentication procedures</li>
+      </ul>
 
       <div class="bg-gray-900 text-gray-100 rounded-lg p-4 my-4">
-        <pre><code># Type conversion examples
-x = 5           # int
-y = float(x)    # Convert to float: 5.0
-z = str(x)      # Convert to string: "5"
+        <pre><code>Security Checklist:
 
-a = "123"
-b = int(a)      # Convert string to int: 123
-
-print(type(y))  # Output: <class 'float'>
-print(type(z))  # Output: <class 'str'></code></pre>
+☑ Verify recipient identity
+☑ Check classification level
+☑ Use secure transmission method
+☑ Confirm receipt
+☑ Destroy sensitive materials properly</code></pre>
       </div>
 
-      <h3>Checking Data Types</h3>
-      <p>Use the <code>type()</code> function to check the data type of any variable:</p>
+      <h3>Best Practices Summary</h3>
+      <p>Remember these key principles for military communications:</p>
+      <ul>
+        <li>Be clear and concise</li>
+        <li>Follow proper protocols and chain of command</li>
+        <li>Maintain security at all times</li>
+        <li>Document all important communications</li>
+        <li>Practice operational security (OPSEC)</li>
+      </ul>
 
       <div class="bg-gray-900 text-gray-100 rounded-lg p-4 my-4">
-        <pre><code># Checking types
-x = 5
-print(type(x))           # Output: <class 'int'>
-
-y = "Hello"
-print(type(y))           # Output: <class 'str'>
-
-z = [1, 2, 3]
-print(isinstance(z, list))  # Output: True</code></pre>
+        <pre><code>REMEMBER:
+- Clear Communication Saves Lives
+- Security Is Everyone's Responsibility
+- When In Doubt, Ask For Clarification
+- Document Everything Important</code></pre>
       </div>
     ` : null,
     transcript: [
-      { time: '0:00', text: 'Welcome to this lesson on Python variables. In this video, we\'ll cover everything you need to know about variables in Python.' },
-      { time: '0:15', text: 'A variable is a container for storing data values. Unlike other programming languages, Python has no command for declaring a variable.' },
-      { time: '0:35', text: 'A variable is created the moment you first assign a value to it. Let me show you with an example.' },
-      { time: '0:50', text: 'If I write x = 5, I\'ve just created a variable called x and assigned it the value 5.' },
-      { time: '1:10', text: 'Variables do not need to be declared with any particular type, and can even change type after they have been set.' },
-      { time: '1:30', text: 'For example, x = 4 makes x an integer, but x = "Sally" changes x to a string.' },
-      { time: '1:50', text: 'Python is case-sensitive, so Variable and variable are two different variables.' },
-      { time: '2:10', text: 'Let\'s talk about naming conventions. Variable names must start with a letter or underscore character.' },
-      { time: '2:30', text: 'They cannot start with a number, and can only contain alpha-numeric characters and underscores.' },
-      { time: '2:50', text: 'Here are some examples: my_var, _my_var, myVar, MYVAR, myvar2 are all valid variable names.' }
+      { time: '0:00', text: 'Welcome to this lesson on military correspondence. In this video, we\'ll cover the fundamentals of official military documentation.' },
+      { time: '0:15', text: 'Military correspondence follows strict protocols and formats. Understanding these standards is essential for effective communication.' },
+      { time: '0:35', text: 'We\'ll begin with the basic structure of a military memorandum and official letters.' },
+      { time: '0:50', text: 'Every military document must include proper headers: FROM, TO, DATE, and SUBJECT lines.' },
+      { time: '1:10', text: 'The language used must be clear, concise, and professional at all times.' },
+      { time: '1:30', text: 'For example, when writing a status report, always use present tense and active voice.' },
+      { time: '1:50', text: 'Classification markings are critical. All documents must be properly marked according to their security level.' },
+      { time: '2:10', text: 'Let\'s discuss the proper chain of command for routing correspondence.' },
+      { time: '2:30', text: 'Documents must follow the established hierarchy and receive appropriate approvals.' },
+      { time: '2:50', text: 'Here are key principles: accuracy, brevity, clarity, and proper format are essential for military correspondence.' }
     ],
     resources: [
-      { id: 1, name: 'Python Variables - Cheat Sheet.pdf', size: '2.4 MB', type: 'pdf' },
-      { id: 2, name: 'Code Examples.zip', size: '156 KB', type: 'zip' },
-      { id: 3, name: 'Practice Exercises.pdf', size: '1.8 MB', type: 'pdf' }
+      { id: 1, name: 'Military Correspondence Guide.pdf', size: '3.2 MB', type: 'pdf' },
+      { id: 2, name: 'Official Letter Templates.zip', size: '245 KB', type: 'zip' },
+      { id: 3, name: 'Communication Protocol Manual.pdf', size: '4.1 MB', type: 'pdf' }
     ],
     nextLesson: {
       id: 2,
-      title: 'Python Data Types',
+      title: 'Official Report Writing',
       locked: false
     },
     previousLesson: {
@@ -168,30 +186,30 @@ print(isinstance(z, list))  # Output: True</code></pre>
   const curriculum = [
     {
       id: 1,
-      title: 'Course Introduction',
+      title: lessonId === '1' ? 'English Fundamentals' : 'Course Introduction',
       lessons: [
-        { id: 1, title: 'Welcome to the Course', duration: '5:30', type: 'video', completed: true },
-        { id: 2, title: 'Setting Up Python', duration: '8:45', type: 'video', completed: true },
-        { id: 3, title: 'Your First Python Program', duration: '6:20', type: 'video', completed: true }
+        { id: 1, title: lessonId === '1' ? 'English Basics' : 'Welcome to Military Correspondence', duration: '5:30', type: 'video', completed: true },
+        { id: 2, title: lessonId === '1' ? 'English Grammar Introduction' : 'Understanding Military Documentation', duration: '8:45', type: 'video', completed: true },
+        { id: 3, title: lessonId === '1' ? 'Basic English Vocabulary' : 'Your First Official Letter', duration: '6:20', type: 'video', completed: true }
       ]
     },
     {
       id: 2,
-      title: 'Python Basics',
+      title: lessonId === '1' ? 'English Communication' : 'Official Documentation',
       lessons: [
-        { id: 4, title: 'Introduction to Python Variables', duration: '15:30', type: 'video', completed: false, current: true },
-        { id: 5, title: 'Understanding Python Data Types', duration: '10 min read', type: 'article', completed: false, locked: false },
-        { id: 6, title: 'String Operations', duration: '18:30', type: 'video', completed: false, locked: false },
-        { id: 7, title: 'Numbers in Python', duration: '10:45', type: 'video', completed: false, locked: false }
+        { id: 4, title: lessonId === '1' ? 'English Conversation Practice' : 'Introduction to Military Correspondence', duration: '15:30', type: 'video', completed: false, current: true },
+        { id: 5, title: lessonId === '1' ? 'English Writing Skills' : 'Military Communication Protocols', duration: '10 min read', type: 'article', completed: false, locked: false },
+        { id: 6, title: lessonId === '1' ? 'English Pronunciation' : 'Report Writing Standards', duration: '18:30', type: 'video', completed: false, locked: false },
+        { id: 7, title: lessonId === '1' ? 'English Listening Comprehension' : 'Memorandum Formats', duration: '10:45', type: 'video', completed: false, locked: false }
       ]
     },
     {
       id: 3,
-      title: 'Control Flow',
+      title: lessonId === '1' ? 'Advanced English' : 'Communication Procedures',
       lessons: [
-        { id: 8, title: 'If Statements', duration: '14:20', completed: false, locked: false },
-        { id: 9, title: 'For Loops', duration: '16:30', completed: false, locked: false },
-        { id: 10, title: 'While Loops', duration: '12:10', completed: false, locked: false }
+        { id: 8, title: lessonId === '1' ? 'Advanced Grammar' : 'Radio Communication Procedures', duration: '14:20', completed: false, locked: false },
+        { id: 9, title: lessonId === '1' ? 'Business English' : 'Chain of Command Protocol', duration: '16:30', completed: false, locked: false },
+        { id: 10, title: lessonId === '1' ? 'English for Presentations' : 'Security Classifications', duration: '12:10', completed: false, locked: false }
       ]
     }
   ];
